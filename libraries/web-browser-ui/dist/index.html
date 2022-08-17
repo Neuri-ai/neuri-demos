@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"><title>Document</title><style>*{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+           background-color:blue
+        }
+
+        .form-test{
+            margin-top: 5rem;
+        }
+        input.input-form {
+            height: 40px;
+            margin-bottom: 1em;
+            margin-left: 0.5em;
+            padding-top: 0.18rem;
+            padding-left: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }</style><script defer="defer" src="permissions.js"></script><script defer="defer" src="drawer.js"></script><script defer="defer" src="push-to-talk.js"></script><script defer="defer" src="browser-uikit.bundle.min.js"></script></head><body><check-permissions></check-permissions><push-to-talk apikey="dasjdio" lang="es-mx" realtime="false"></push-to-talk><script>window.addEventListener('onStart', (e) => {
+        console.log(e);
+    });
+
+    window.addEventListener('onInitilized', (e) => {
+        console.log(e);
+    });
+    window.addEventListener('onSpeech', (e) => {
+        console.log(e);
+    });
+    window.addEventListener('onResult', (e) => {
+        console.log(e);
+    });</script></body></html>
