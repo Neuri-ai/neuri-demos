@@ -1,0 +1,25 @@
+{
+  "name": "ProjectX-Javascript-SDK",
+  "version": "1.0.0",
+  "description": "A simple SDK for ProjectX API",
+  "repository": "https://github.com/SecondCrew/ProjectX-Javascript-SDK.git",
+  "author": "Second Crew",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --open --config webpack.config.js"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "lit": "^2.2.8",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
