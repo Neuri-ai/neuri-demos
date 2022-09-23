@@ -2,12 +2,48 @@ import './style.css';
 
 const FormFill = () => {
     return (
-        <form class="search-container">
-            <input type="text" id="search-bar" placeholder="What can I help you with today?"/>
-            <button>
-                <img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"/>
-            </button>
-        </form>
-    )
+        <div>
+
+            <section>
+        
+                    <section class="car">
+                        <form className="car-renta">
+                            <label>
+                                <p>Pick up location</p>
+                                <input type="text"></input> 
+                            </label>
+
+                            <label>
+                                <p>Drop off location</p>
+                                <input placeholder="Same as pick up location" type="text"></input> 
+                            </label>
+                            <article class="pick">
+
+                                <div class="off"> <label>
+                                    <p>Pick up Date</p>
+                                    <input type="date"></input> 
+                                </label>
+
+                                    <label>
+                                        <input type="time"></input> 
+                                    </label>
+                                </div>
+                                <div class="off">
+                                    <label>
+                                        <p>Drop off Date</p>
+                                        <input type="date"></input> 
+                                    </label>
+                                    <label>
+                                        <input type="time"></input> 
+                                    </label>
+                                </div>
+                                <button type="submit">Search</button>
+                            </article>
+                        </form>
+                    </section>
+            </section>
+
+                </div>
+                )
 }
-export default FormFill
+                export default FormFill
