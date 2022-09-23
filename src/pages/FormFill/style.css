@@ -1,23 +1,64 @@
- *{max-width:100%;
-    box-sizing:border-box;height: auto;}
-    
-    
-    input{height: rem;width: 85vw;background: rgb(253, 253, 253);border:none;border-radius: 5px;padding: 10px;}
-    
-    p{font-size:1rem;margin: 10px 5px;}
-    
-    
-    select{margin: 0px 5px;background: white;height: 4rem;border:none;border-radius: 5px;}
-    
-    p{color: white;}
-   
-    /*car car car car car car car car*/
-    .car{width: 90vw;height:450px;background: purple;border-radius: 5px;transition:.5s;margin: 30px auto;}
+input {
+  height: rem;
+  width: 85vw;
+  background: rgb(253, 253, 253);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
 
-    .pick input{width: 40vw;margin: 10px;}
-    .off{display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;}
-    .car button{background: gold;width:85vw;height:2rem;border:none;border-radius: 5px;color: black;font-size:1rem;font-weight:500;text-transform:uppercase}
-    .car-renta{
-      padding: 2em;
-    }
-  
+p {
+  font-size: 1rem;
+  margin: 10px 5px;
+}
+
+
+select {
+  margin: 0px 5px;
+  background: white;
+  height: 4rem;
+  border: none;
+  border-radius: 5px;
+}
+
+p {
+  color: white;
+}
+
+/*car car car car car car car car*/
+.car {
+  width: 90vw;
+  height: 450px;
+  background: purple;
+  border-radius: 5px;
+  transition: .5s;
+  margin: 30px auto;
+}
+
+.pick input {
+  width: 40vw;
+  margin: 10px;
+}
+
+.off {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.car button {
+  background: gold;
+  width: 85vw;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase
+}
+
+.car-renta {
+  padding: 2em;
+}
