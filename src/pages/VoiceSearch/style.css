@@ -1,59 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.container {
-  display: flex;
+.dvscontainer {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 84% 15%;
+  gap: 1%;
+}
+
+.dvschatcontainer::-webkit-scrollbar {
+  position: fixed;
+}
+
+.dvschatcontainer {
+  position: relative;
+  background-color: white;
+  margin: auto auto;
+  padding: 40px;
+  width: 90%;
+  height: 95%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px gray;
+  display: inline-flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  padding: 2em;
+  overflow-y: scroll;
+  gap: 20px;
+  z-index: 6;
 }
 
-form.bar-search {
-  color: #555;
+.dvschatcontainer p {
+  padding: 15px;
+  margin: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: 'Poppins';
+  font-weight: 600;
+}
+
+.chat.izq {
+  width: fit-content;
   display: flex;
-  padding: 2px;
-  border: 1px solid currentColor;
-  border-radius: 5px;
-  margin: 0 0 30px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
-input[type=search] {
-  border: none;
-  background: transparent;
-  margin: 0;
-  padding: 7px 8px;
-  font-size: 14px;
-  color: inherit;
-  border: 1px solid transparent;
-  border-radius: inherit;
+.chat.izq p {
+  background-color: #d473fa;
+  color: white;
+  border-bottom-right-radius: 10px;
 }
 
-input[type=search]::placeholder {
-  color: #bbb;
+.chat.der img,
+.chat.izq img {
+  height: 40px;
 }
 
-button.search-iconbutton {
-  text-indent: -999px;
-  overflow: hidden;
-  width: 40px;
-  padding: 0;
-  margin: 0;
-  border: 1px solid transparent;
-  border-radius: inherit;
-  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+.chat.der {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat.der p {
+  background-color: #1ee972;
+  border-bottom-left-radius: 10px;
+}
+
+.chatinput {
+  box-shadow: 2px 2px 5px gray;
+  background-color: white;
+  border-radius: 30px;
+  width: 60%;
+  height: 50%;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.chatinput p {
+  margin: 0px;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.chatinput img {
+  background-color: cadetblue;
+  border-radius: 50%;
+  height: 90%;
+  padding: 7px;
+  margin: 0px 5px;
   cursor: pointer;
-  opacity: 0.7;
+  transition: scale ease 0.5s;
 }
 
-button[type=submit]:hover {
-  opacity: 1;
+.chatinput img:hover {
+  scale: 1.2;
 }
-
-button[type=submit]:focus,
-input[type=search]:focus {
-  box-shadow: 0 0 3px 0 #1183d6;
-  border-color: #1183d6;
-  outline: none;
-}
-
-
-
