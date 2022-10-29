@@ -5,17 +5,9 @@ import "./style.css";
 import { useState } from "react";
 
 // import RecordRTC from "recordrtc";
-import RecordRTC, {StereoAudioRecorder} from "recordrtc";
+import RecordRTC, { StereoAudioRecorder } from "recordrtc";
 
 const initialtexttest = [
-  {
-    message: "Hola esto es una prueba",
-    pos: "izq",
-  },
-  {
-    message: "A que bueno papu",
-    pos: "der",
-  },
   {
     message: "Panchito se la come",
     pos: "izq",
@@ -96,11 +88,19 @@ const VoiceSearch = () => {
         // try parsing the message as JSON if it fails, it's the connection state
         try {
           const res = JSON.parse(event.data);
-          if (!res.isFinal) {
+          if (res.isFinal === false) {
             setText(res.transcription);
           } else {
             // cuando este bloque se ejecuta es porque se debe de enviar el mensaje
-            console.log(res.transcription);
+            //console.log(res.transcription);
+            const newMessages = [
+              ...messages,
+              {
+                message: res.transcription,
+                pos: "der"
+              },
+            ]
+            setMessages(newMessages)
           }
         } catch (e) {
           console.log(event.data);
