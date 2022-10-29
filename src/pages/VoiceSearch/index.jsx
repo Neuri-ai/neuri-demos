@@ -1,8 +1,9 @@
-import Icons from "helpers/iconscall";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { gsap } from "gsap";
+import shortid from "shortid";
+import Icons from "helpers/iconscall";
 import "./style.css";
-import { useState } from "react";
+
 
 // import RecordRTC from "recordrtc";
 import RecordRTC, { StereoAudioRecorder } from "recordrtc";
@@ -63,6 +64,7 @@ const VoiceSearch = () => {
     );
   }, []);
 
+
   const run = async () => {
     setRecording(!isRecording);
 
@@ -90,17 +92,17 @@ const VoiceSearch = () => {
           const res = JSON.parse(event.data);
           if (res.isFinal === false) {
             setText(res.transcription);
-          } else {
-            // cuando este bloque se ejecuta es porque se debe de enviar el mensaje
-            //console.log(res.transcription);
-            const newMessages = [
+          }
+          if (res.isFinal === true) {
+            setText(res.transcription);
+            setMessages((messages) => [
               ...messages,
               {
                 message: res.transcription,
-                pos: "der"
+                pos: "der",
+                id: shortid.generate()
               },
-            ]
-            setMessages(newMessages)
+            ]);
           }
         } catch (e) {
           console.log(event.data);
