@@ -35,7 +35,7 @@ const VoiceSearch = () => {
   const [isRecording, setRecording] = useState(true);
   const [messages, setMessages] = useState(initialtexttest);
   const [imgClass, setImgClass] = useState('standby')
-  const [color, setColor] = useState('')
+  const [color, setColor] = useState('#3913e6')
   useEffect(() => {
     let tl = gsap.timeline();
     tl.fromTo(
@@ -131,8 +131,8 @@ const VoiceSearch = () => {
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-            setImgClass('voiceactive')
-            setColor('#ffffffad')
+          setImgClass('voiceactive')
+          setColor('#ffffffad')
           recorder = RecordRTC(stream, {
             type: "audio",
             recorderType: StereoAudioRecorder,
@@ -184,6 +184,10 @@ const VoiceSearch = () => {
         <p>{microText}</p>
         <button onClick={() => run()}>
           <div className={`${imgClass}`}><Microphone color={color} /></div>
+          <div className={`${imgClass}`}></div>
+          <div className={`${imgClass}`}></div>
+          <div className={`${imgClass}`}></div>
+          <div className={`${imgClass}`}></div>
           <div className={`${imgClass}`}></div>
           <img className={`${imgClass}`} src={Icons.MicroBase} alt="base" />
         </button>
