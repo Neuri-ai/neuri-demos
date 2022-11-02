@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
 import shortid from "shortid";
-import {Icons, Microphone} from "helpers/iconscall";
+import { Icons, Microphone } from "helpers/iconscall";
 import "./style.css";
 
 
@@ -116,6 +116,7 @@ const VoiceSearch = () => {
         console.log(error);
         socket.close();
         setImgClass('standby')
+        setColor('#3913e6')
         socket = null;
       };
 
@@ -123,13 +124,15 @@ const VoiceSearch = () => {
       socket.onclose = (event) => {
         console.log(event);
         setImgClass('standby')
+        setColor('#3913e6')
         socket = null; // clean of memory
       };
 
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-          setImgClass('voiceactive')
+            setImgClass('voiceactive')
+            setColor('#ffffffad')
           recorder = RecordRTC(stream, {
             type: "audio",
             recorderType: StereoAudioRecorder,
@@ -164,15 +167,6 @@ const VoiceSearch = () => {
     }
   };
 
-  const test = () => {
-    imgClass === "standby" 
-    ? setImgClass('voiceactive')
-    : setImgClass('standby')
-    imgClass === "standby" 
-    ? setColor('#ffffffad')
-    : setColor('#000000')
-  }
-
   return (
     <div className="dvscontainer">
       <div className="dvschatcontainer">
@@ -188,7 +182,7 @@ const VoiceSearch = () => {
       </div>
       <div className="chatinput">
         <p>{microText}</p>
-        <button onClick={() => test()}>
+        <button onClick={() => run()}>
           <div className={`${imgClass}`}><Microphone color={color} /></div>
           <div className={`${imgClass}`}></div>
           <img className={`${imgClass}`} src={Icons.MicroBase} alt="base" />
