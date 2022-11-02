@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
 import shortid from "shortid";
-import Icons from "helpers/iconscall";
+import {Icons, Microphone} from "helpers/iconscall";
 import "./style.css";
 
 
@@ -10,15 +10,15 @@ import RecordRTC, { StereoAudioRecorder } from "recordrtc";
 
 const initialtexttest = [
   {
-    message: "Panchito se la come",
+    message: "Hola",
     pos: "izq",
   },
   {
-    message: "Entera y doblada ajajaja",
+    message: "Esto es una prueba",
     pos: "izq",
   },
   {
-    message: "Santa purisima",
+    message: "Mensajes de Prueba 2",
     pos: "der",
   },
 ];
@@ -34,6 +34,8 @@ const VoiceSearch = () => {
   const [microText, setText] = useState("");
   const [isRecording, setRecording] = useState(true);
   const [messages, setMessages] = useState(initialtexttest);
+  const [imgClass, setImgClass] = useState('standby')
+  const [color, setColor] = useState('')
   useEffect(() => {
     let tl = gsap.timeline();
     tl.fromTo(
@@ -45,7 +47,7 @@ const VoiceSearch = () => {
       {
         opacity: 1,
         scale: 1,
-        duration: 1,
+        duration: 0.5,
       }
     );
     tl.fromTo(
@@ -59,7 +61,7 @@ const VoiceSearch = () => {
         opacity: 1,
         scale: 1,
         y: 0,
-        duration: 1,
+        duration: 0.5,
       }
     );
   }, []);
@@ -113,18 +115,21 @@ const VoiceSearch = () => {
       socket.onerror = (error) => {
         console.log(error);
         socket.close();
+        setImgClass('standby')
         socket = null;
       };
 
       // handle closing the socket
       socket.onclose = (event) => {
         console.log(event);
+        setImgClass('standby')
         socket = null; // clean of memory
       };
 
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+          setImgClass('voiceactive')
           recorder = RecordRTC(stream, {
             type: "audio",
             recorderType: StereoAudioRecorder,
@@ -159,6 +164,15 @@ const VoiceSearch = () => {
     }
   };
 
+  const test = () => {
+    imgClass === "standby" 
+    ? setImgClass('voiceactive')
+    : setImgClass('standby')
+    imgClass === "standby" 
+    ? setColor('#ffffffad')
+    : setColor('#000000')
+  }
+
   return (
     <div className="dvscontainer">
       <div className="dvschatcontainer">
@@ -174,7 +188,11 @@ const VoiceSearch = () => {
       </div>
       <div className="chatinput">
         <p>{microText}</p>
-        <img onClick={() => run()} src={Icons.Microphone} alt="microphone" />
+        <button onClick={() => test()}>
+          <div className={`${imgClass}`}><Microphone color={color} /></div>
+          <div className={`${imgClass}`}></div>
+          <img className={`${imgClass}`} src={Icons.MicroBase} alt="base" />
+        </button>
       </div>
     </div>
   );
