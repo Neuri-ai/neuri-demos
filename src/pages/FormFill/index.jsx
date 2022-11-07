@@ -14,23 +14,18 @@ const FormFill = () => {
 				</label>
 				<div id='DFG3'>
 					<div className="off">
-						<label>
-							<p>Pick up Date</p>
+						<label>Pick up Date</label>
+						<div className="inputs">
 							<input type="date"></input>
-						</label>
-
-						<label>
-							<input type="time"></input>
-						</label>
+							<input type="time" value="08:00"></input>
+						</div>
 					</div>
 					<div className="off">
-						<label>
-							<p>Drop off Date</p>
+						<label>Drop off Date</label>
+						<div className="inputs">
 							<input type="date"></input>
-						</label>
-						<label>
-							<input type="time"></input>
-						</label>
+							<input type="time" value="13:00"></input>
+						</div>
 					</div>
 				</div>
 				<button type="submit" id='DFFBtn'>Search</button>

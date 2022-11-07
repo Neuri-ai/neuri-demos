@@ -1,0 +1,101 @@
+#dpfcontainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+#microdiv {
+    position: sticky;
+    bottom: 40px; left: calc(50% - 2em);
+    width: 9vw; height: 9vw;
+    min-width: 60px; max-width: 70px;
+    min-height: 60px; max-height: 70px;
+    border-radius: 50%;
+}
+
+#dpfsubcontainer {
+    display: flex;
+    flex-direction: row;
+}
+#dpfoptions1 {
+    width: 60%;
+    min-width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.dpfselect {
+    display: flex; flex-direction: row; gap: 5px;
+    align-items: center; justify-content: center;
+    height: 2em; padding: 0px 10px;
+    border-bottom: 1px solid black;
+}
+.dpfselect select {
+    border: none;
+}
+
+.pfoptions {
+    padding: 0px 20px;
+    border-bottom: 1px solid black;
+    transition: all 0.5s ease;
+}
+.pfoptions.active {
+    border-bottom: 1px solid blue; border-top: 1px solid blue;
+    background: #cacaca42;
+    scale: 1.1;
+}
+
+#dpfcardscontainer {
+    height: auto; width: 80%;
+    margin-top: 10px !important;
+    margin: auto; padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22em, 22em));
+    grid-auto-rows: 30em;
+    justify-content: center;
+}
+
+.pfcards {
+    margin: 5px 15px;
+    padding: 10px;
+    height: auto;
+    border-radius: 15px;
+    display: grid;
+    grid-template-rows: 59% 39%;
+    gap: 2%;
+    
+}
+.dpfimage {
+    width: 80%;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+.pfcards img {
+    margin: 0px;
+    justify-self: center;
+    height: 100%;
+}
+#dpfoptions1 p,
+.pfcards p {
+    margin: 0px;
+}
+.pfinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.pfseparator {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

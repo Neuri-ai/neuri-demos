@@ -14,7 +14,7 @@ import Navbar from "components/Navbar";
 const demosPaths = [
 	{ path: '/demos/form-fill', name: 'Form Filling'},
 	{ path: '/demos/product-filter', name: 'Product Filter'},
-	{ path: '/demos/voice-commands', name: 'Voice Commands'},
+	//{ path: '/demos/voice-commands', name: 'Voice Commands'},
 	{ path: '/demos/voice-search', name: 'Voice Input'},
 ]
 

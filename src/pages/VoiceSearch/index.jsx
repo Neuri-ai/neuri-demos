@@ -7,6 +7,7 @@ import "./style.css";
 
 // import RecordRTC from "recordrtc";
 import RecordRTC, { StereoAudioRecorder } from "recordrtc";
+import NMicrophone from "../../components/Microphone";
 
 const initialtexttest = [
   {
@@ -34,7 +35,7 @@ const VoiceSearch = () => {
   const [microText, setText] = useState("");
   const [isRecording, setRecording] = useState(true);
   const [messages, setMessages] = useState(initialtexttest);
-  const [imgClass, setImgClass] = useState('standby')
+  const [imgClass, setImgClass] = useState('')
   useEffect(() => {
     let tl = gsap.timeline();
     tl.fromTo(
@@ -114,21 +115,21 @@ const VoiceSearch = () => {
       socket.onerror = (error) => {
         console.log(error);
         socket.close();
-        setImgClass('standby')
+        setImgClass('')
         socket = null;
       };
 
       // handle closing the socket
       socket.onclose = (event) => {
         console.log(event);
-        setImgClass('standby')
+        setImgClass('')
         socket = null; // clean of memory
       };
 
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-          setImgClass('voiceactive')
+          setImgClass('active')
           recorder = RecordRTC(stream, {
             type: "audio",
             recorderType: StereoAudioRecorder,
@@ -178,14 +179,9 @@ const VoiceSearch = () => {
       </div>
       <div className="chatinput">
         <p>{microText}</p>
-        
-        <button onClick={() => run()}>
-          <div className={`${imgClass}`}><Microphone /></div>
-          <div className={`${imgClass}`}></div>
-          <div className={`${imgClass}`}></div>
-          <div className={`${imgClass}`}></div>
-          <img className={`${imgClass}`} src={Icons.MicroBase} alt="base" />
-        </button>
+        <div id="vsmicrodiv" onClick={() => run()}>
+          <NMicrophone state={imgClass} />
+        </div>
       </div>
     </div>
   );

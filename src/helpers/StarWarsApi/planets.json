@@ -1,0 +1,244 @@
+[
+	{
+		"name": "Tatooine",
+		"rotation_period": "23",
+		"orbital_period": "304",
+		"diameter": "10465",
+		"climate": "arid",
+		"gravity": "1 standard",
+		"terrain": "desert",
+		"type": "planet",
+		"population": "200000",
+		"image": "https://comicvine.gamespot.com/a/uploads/scale_medium/0/9116/244075-98113-tatooine.jpg",
+		"residents": [
+			"https://swapi.dev/api/people/1/",
+			"https://swapi.dev/api/people/2/",
+			"https://swapi.dev/api/people/4/",
+			"https://swapi.dev/api/people/6/",
+			"https://swapi.dev/api/people/7/",
+			"https://swapi.dev/api/people/8/",
+			"https://swapi.dev/api/people/9/",
+			"https://swapi.dev/api/people/11/",
+			"https://swapi.dev/api/people/43/",
+			"https://swapi.dev/api/people/62/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/1/",
+			"https://swapi.dev/api/films/3/",
+			"https://swapi.dev/api/films/4/",
+			"https://swapi.dev/api/films/5/",
+			"https://swapi.dev/api/films/6/"
+		],
+		"created": "2014-12-09T13:50:49.641000Z",
+		"edited": "2014-12-20T20:58:18.411000Z",
+		"url": "https://swapi.dev/api/planets/1/"
+	},
+	{
+		"name": "Alderaan",
+		"rotation_period": "24",
+		"orbital_period": "364",
+		"diameter": "12500",
+		"climate": "temperate",
+		"gravity": "1 standard",
+		"terrain": "grasslands, mountains",
+		"type": "planet",
+		"population": "2000000000",
+		"image": "https://vignette.wikia.nocookie.net/terragenesis/images/4/4f/Paradise_Ganymede.png/revision/latest/scale-to-width-down/310?cb=20190620191857",
+		"residents": [
+			"https://swapi.dev/api/people/5/",
+			"https://swapi.dev/api/people/68/",
+			"https://swapi.dev/api/people/81/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/1/",
+			"https://swapi.dev/api/films/6/"
+		],
+		"created": "2014-12-10T11:35:48.479000Z",
+		"edited": "2014-12-20T20:58:18.420000Z",
+		"url": "https://swapi.dev/api/planets/2/"
+	},
+	{
+		"name": "Yavin IV",
+		"rotation_period": "24",
+		"orbital_period": "4818",
+		"diameter": "10200",
+		"climate": "temperate, tropical",
+		"gravity": "1 standard",
+		"terrain": "jungle, rainforests",
+		"type": "planet",
+		"population": "1000",
+		"image": "https://vignette2.wikia.nocookie.net/starwars/images/d/d4/Yavin-4-SWCT.png/revision/latest?cb=20170712005330",
+		"residents": [],
+		"films": [
+			"https://swapi.dev/api/films/1/"
+		],
+		"created": "2014-12-10T11:37:19.144000Z",
+		"edited": "2014-12-20T20:58:18.421000Z",
+		"url": "https://swapi.dev/api/planets/3/"
+	},
+	{
+		"name": "Hoth",
+		"rotation_period": "23",
+		"orbital_period": "549",
+		"diameter": "7200",
+		"climate": "frozen",
+		"gravity": "1.1 standard",
+		"terrain": "tundra, ice caves, mountain ranges",
+		"type": "planet",
+		"population": "unknown",
+		"image": "https://th.bing.com/th/id/OIP.IdBVY1ftrJda5ii_SifMhgHaHa?pid=ImgDet&rs=1",
+		"residents": [],
+		"films": [
+			"https://swapi.dev/api/films/2/"
+		],
+		"created": "2014-12-10T11:39:13.934000Z",
+		"edited": "2014-12-20T20:58:18.423000Z",
+		"url": "https://swapi.dev/api/planets/4/"
+	},
+	{
+		"name": "Dagobah",
+		"rotation_period": "23",
+		"orbital_period": "341",
+		"diameter": "8900",
+		"climate": "murky",
+		"gravity": "N/A",
+		"terrain": "swamp, jungles",
+		"type": "planet",
+		"population": "unknown",
+		"image": "https://vignette.wikia.nocookie.net/es.starwars/images/5/58/Dagobah_FDNP.png/revision/latest?cb=20170622141310",
+		"residents": [],
+		"films": [
+			"https://swapi.dev/api/films/2/",
+			"https://swapi.dev/api/films/3/",
+			"https://swapi.dev/api/films/6/"
+		],
+		"created": "2014-12-10T11:42:22.590000Z",
+		"edited": "2014-12-20T20:58:18.425000Z",
+		"url": "https://swapi.dev/api/planets/5/"
+	},
+	{
+		"name": "Bespin",
+		"rotation_period": "12",
+		"orbital_period": "5110",
+		"diameter": "118000",
+		"climate": "temperate",
+		"gravity": "1.5 (surface), 1 standard (Cloud City)",
+		"terrain": "gas giant",
+		"type": "planet",
+		"population": "6000000",
+		"image": "https://vignette.wikia.nocookie.net/fr.starwars/images/2/2c/Bespin_EotECR.png/revision/latest?cb=20170704082523",
+		"residents": [
+			"https://swapi.dev/api/people/26/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/2/"
+		],
+		"created": "2014-12-10T11:43:55.240000Z",
+		"edited": "2014-12-20T20:58:18.427000Z",
+		"url": "https://swapi.dev/api/planets/6/"
+	},
+	{
+		"name": "Endor",
+		"rotation_period": "18",
+		"orbital_period": "402",
+		"diameter": "4900",
+		"climate": "temperate",
+		"gravity": "0.85 standard",
+		"terrain": "forests, mountains, lakes",
+		"type": "planet",
+		"population": "30000000",
+		"image": "https://vignette.wikia.nocookie.net/es.starwars/images/e/e5/Endor-SWCT.png/revision/latest?cb=20170629180854",
+		"residents": [
+			"https://swapi.dev/api/people/30/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/3/"
+		],
+		"created": "2014-12-10T11:50:29.349000Z",
+		"edited": "2014-12-20T20:58:18.429000Z",
+		"url": "https://swapi.dev/api/planets/7/"
+	},
+	{
+		"name": "Naboo",
+		"rotation_period": "26",
+		"orbital_period": "312",
+		"diameter": "12120",
+		"climate": "temperate",
+		"gravity": "1 standard",
+		"terrain": "grassy hills, swamps, forests, mountains",
+		"type": "planet",
+		"population": "4500000000",
+		"image": "https://th.bing.com/th/id/OIP.nlJZm9sRGL_4nepUoO0-2gHaHY?pid=ImgDet&rs=1",
+		"residents": [
+			"https://swapi.dev/api/people/3/",
+			"https://swapi.dev/api/people/21/",
+			"https://swapi.dev/api/people/35/",
+			"https://swapi.dev/api/people/36/",
+			"https://swapi.dev/api/people/37/",
+			"https://swapi.dev/api/people/38/",
+			"https://swapi.dev/api/people/39/",
+			"https://swapi.dev/api/people/42/",
+			"https://swapi.dev/api/people/60/",
+			"https://swapi.dev/api/people/61/",
+			"https://swapi.dev/api/people/66/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/3/",
+			"https://swapi.dev/api/films/4/",
+			"https://swapi.dev/api/films/5/",
+			"https://swapi.dev/api/films/6/"
+		],
+		"created": "2014-12-10T11:52:31.066000Z",
+		"edited": "2014-12-20T20:58:18.430000Z",
+		"url": "https://swapi.dev/api/planets/8/"
+	},
+	{
+		"name": "Coruscant",
+		"rotation_period": "24",
+		"orbital_period": "368",
+		"diameter": "12240",
+		"climate": "temperate",
+		"gravity": "1 standard",
+		"terrain": "cityscape, mountains",
+		"type": "planet",
+		"population": "1000000000000",
+		"image": "https://th.bing.com/th/id/OIP.ojJ2SRXXSPpXqYraeuo7uAHaHa?pid=ImgDet&rs=1",
+		"residents": [
+			"https://swapi.dev/api/people/34/",
+			"https://swapi.dev/api/people/55/",
+			"https://swapi.dev/api/people/74/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/3/",
+			"https://swapi.dev/api/films/4/",
+			"https://swapi.dev/api/films/5/",
+			"https://swapi.dev/api/films/6/"
+		],
+		"created": "2014-12-10T11:54:13.921000Z",
+		"edited": "2014-12-20T20:58:18.432000Z",
+		"url": "https://swapi.dev/api/planets/9/"
+	},
+	{
+		"name": "Kamino",
+		"rotation_period": "27",
+		"orbital_period": "463",
+		"diameter": "19720",
+		"climate": "temperate",
+		"gravity": "1 standard",
+		"terrain": "ocean",
+		"type": "planet",
+		"population": "1000000000",
+		"image": "https://th.bing.com/th/id/R.586f2ab18e7ac9bf11a807b2516cd2a7?rik=2Ai7ULZF7iiwwA&riu=http%3a%2f%2fimages1.wikia.nocookie.net%2f__cb20090527045543%2fstarwars%2fimages%2fa%2fa9%2fEaw_Kamino.jpg&ehk=94%2fo%2fvV7D74nPfMYTIFYljGP%2bwY%2bSyrYpbwO4BsQoaU%3d&risl=&pid=ImgRaw&r=0",
+		"residents": [
+			"https://swapi.dev/api/people/22/",
+			"https://swapi.dev/api/people/72/",
+			"https://swapi.dev/api/people/73/"
+		],
+		"films": [
+			"https://swapi.dev/api/films/5/"
+		],
+		"created": "2014-12-10T12:45:06.577000Z",
+		"edited": "2014-12-20T20:58:18.434000Z",
+		"url": "https://swapi.dev/api/planets/10/"
+	}
+]
