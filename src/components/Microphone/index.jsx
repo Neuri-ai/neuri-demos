@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { MicroBase, Microphone } from '../../helpers/iconscall'
+import { MicroBase, Microphone } from 'helpers/iconscall'
 import './Microphone.style.scss'
 
 const NMicrophone = ({ state }) => {

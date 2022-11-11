@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import SWPeople from "helpers/StarWarsApi/people.json";
 import SWPlanets from "helpers/StarWarsApi/planets.json";
 import NMicrophone from 'components/Microphone';
+import { Icons } from 'helpers/iconscall'
 import './style.css';
+import './productfilter.style.scss';
+import gsap from 'gsap';
 
 const ProductFilter = () => {
 	const [SValue, setSValue] = useState({
@@ -29,23 +32,40 @@ const ProductFilter = () => {
 		setFiltered(newFilter)
 	}
 
+	const InitialDdown = { d1: '', d2: '' }
+	const [ddown, setDdrown] = useState(InitialDdown)
+	const [ddowndiv, setDdownDiv] = useState('')
+
+	useEffect(() => {
+		let tl = gsap.timeline();
+		tl.fromTo('#dpfoptions1', {
+			scale: 0.5, opacity: 0
+		}, { scale: 1, opacity: 1 })
+		tl.fromTo('#dpfcardscontainer', {
+			opacity: 0
+		}, { opacity: 1 })
+		tl.fromTo('#microdiv', {
+			opacity: 0, scale: 1.5
+		}, { opacity: 1, scale: 1 })
+	},[])
+	const Dropselection = ( ddoption ) => {
+		let newDdown = { ...InitialDdown, [ddoption]: ddown[ddoption] === '' ? 'active' : '' }
+		setDdrown(newDdown)
+		if( newDdown.d1 !== '' || newDdown.d2 !== '' ) return setDdownDiv('show')
+		setDdownDiv('')
+	}
+
 	return (
 		<div id="dpfcontainer">
 			<div id="dpfoptions1">
-				<div className="dpfselect">
-					<p>Type:</p>
-					<select name='type' defaultValue={SValue.type} onChange={(e) => filter(e)}>
-						<option value="any" selected>Any</option>
-						<option value="people">People</option>
-						<option value="planet">Planet</option>
-					</select>
+				<div className={`dpfddlist ${ddowndiv}`}></div>
+				<div className="dpfselect" onClick={() => Dropselection('d1')}>
+					<p>Type</p>
+					<img className={`${ddown.d1}`} src={Icons.Arrow} alt="arrow" />
 				</div>
-				<div className="dpfselect">
-					<p>Films:</p>
-					<select name='films' defaultValue={SValue.films} onChange={(e) => filter(e)}>
-						<option value="any" selected>Any</option>
-						<option value="episode1">Episode 1</option>
-					</select>
+				<div className="dpfselect" onClick={() => Dropselection('d2')}>
+					<p>Films</p>
+					<img className={`${ddown.d2}`} src={Icons.Arrow} alt="arrow" />
 				</div>
 				{
 					SValue.type === 'people' &&

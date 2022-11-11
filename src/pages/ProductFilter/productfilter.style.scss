@@ -1,0 +1,44 @@
+#dpfoptions1 {
+  position: relative;
+}
+
+.dpfselect {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+
+  p {
+    color: #8f8f8f;
+  }
+  img {
+    height: 20%;
+    transition: all 0.5s ease-in-out;
+
+    &.active {
+      rotate: 180deg;
+    }
+  }
+  &:hover {
+    p {
+      color: black;
+    }
+  }
+}
+
+.dpfddlist {
+  position: absolute;
+  top: calc(100% + 5px);
+  width: 70vw; max-height: 0px; height: 200px;
+  border-radius: 12px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: #ffffff;
+  filter: drop-shadow(0px 0px 2px #5a5a5a);
+
+  &.show {
+    opacity: 1;
+    max-height: 200px;
+  }
+}

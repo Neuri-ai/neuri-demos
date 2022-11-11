@@ -34,7 +34,6 @@
     display: flex; flex-direction: row; gap: 5px;
     align-items: center; justify-content: center;
     height: 2em; padding: 0px 10px;
-    border-bottom: 1px solid black;
 }
 .dpfselect select {
     border: none;

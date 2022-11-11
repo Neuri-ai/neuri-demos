@@ -2,6 +2,8 @@ export const Icons = {
   MicroBase: require('icons/LayerStandbyMicrophone.svg').default,
   Microphone: require('icons/microphone.svg').default,
   Microphoneon: require('icons/microphoneon.svg').default,
+  Arrow: require('icons/arrow.svg').default,
+  X: require('icons/x.svg').default,
   Neuri: require('images/Logo.png'),
   User: require('icons/gato.png'),
 }

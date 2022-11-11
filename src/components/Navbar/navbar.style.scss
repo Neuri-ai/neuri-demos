@@ -1,0 +1,75 @@
+#dnnavbarcontainer {
+  background: #2C354F;
+  height: 80px;
+  width: 100vw;
+  z-index: 80;
+  
+  #dnnavbar {
+    position: relative;
+    width: 70vw;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .neurilogo {
+      height: 40%;
+    }
+  }
+}
+
+#demo-menu-dropdown {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  #demo-menu {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 0px 20px;
+    color: white;
+    height: 50%;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+
+    &:focus {
+      background-color: white;
+      color: black;
+    }
+  }
+
+  #demo-menu:focus + .demoslist {
+    max-height: 300px;
+  }
+
+  .demoslist {
+    position: absolute;
+    top: 90%; right: 0;
+    z-index: 90;
+    max-height: 0px; padding: 0px; width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    overflow-y: hidden;
+    filter: drop-shadow(0px 0px 2px gray);
+    transition: all 0.5s ease;
+
+    li {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 10px;
+    }
+  }
+}
