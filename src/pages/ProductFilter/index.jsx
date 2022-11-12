@@ -16,27 +16,6 @@ const ProductFilter = () => {
 	const [imgClass, setImgClass] = useState('')
 
 	useEffect(() => {
-	}, [])
-
-	const filter = (e) => {
-		let name = e.target.name; let val = e.target.value;
-		const newSValue = { ...SValue, [name]: val }
-		setSValue(newSValue);
-
-		let newFilter = DataBase.sort(() => Math.random() - 0.5);
-
-		if (newSValue.type !== 'any') newFilter = newFilter.filter(obj => { return obj.type === newSValue.type })
-		if (newSValue.films !== 'any') newFilter = newFilter.filter(obj => { return obj.type === newSValue.films })
-		if ((newSValue.type === 'people' && newSValue.gender !== 'any')) newFilter = newFilter.filter(obj => { return obj.gender === newSValue.gender })
-
-		setFiltered(newFilter)
-	}
-
-	const InitialDdown = { d1: '', d2: '' }
-	const [ddown, setDdrown] = useState(InitialDdown)
-	const [ddowndiv, setDdownDiv] = useState('')
-
-	useEffect(() => {
 		let tl = gsap.timeline();
 		tl.fromTo('#dpfoptions1', {
 			scale: 0.5, opacity: 0
@@ -48,38 +27,43 @@ const ProductFilter = () => {
 			opacity: 0, scale: 1.5
 		}, { opacity: 1, scale: 1 })
 	},[])
-	const Dropselection = ( ddoption ) => {
-		let newDdown = { ...InitialDdown, [ddoption]: ddown[ddoption] === '' ? 'active' : '' }
-		setDdrown(newDdown)
-		if( newDdown.d1 !== '' || newDdown.d2 !== '' ) return setDdownDiv('show')
-		setDdownDiv('')
+
+	const [ddownvalue, setDdownValue] = useState('type')
+	const [filteropt, setFilterOpt] = useState({
+		type: ["people","planet"], films: ["Episode 1", "Episode 2"]
+	})
+
+	const Dropselection = ( opt1, opt2 ) => {
+		const newSValue = { ...SValue, [opt1]: opt2 }
+		setSValue(newSValue);
+
+		let newFilter = DataBase.sort(() => Math.random() - 0.5);
+
+		if (newSValue.type !== 'any') newFilter = newFilter.filter(obj => { return obj.type === newSValue.type })
+		if (newSValue.films !== 'any') newFilter = newFilter.filter(obj => { return obj.type === newSValue.films })
+		if ((newSValue.type === 'people' && newSValue.gender !== 'any')) newFilter = newFilter.filter(obj => { return obj.gender === newSValue.gender })
+
+		setFiltered(newFilter)
 	}
 
 	return (
 		<div id="dpfcontainer">
 			<div id="dpfoptions1">
-				<div className={`dpfddlist ${ddowndiv}`}></div>
-				<div className="dpfselect" onClick={() => Dropselection('d1')}>
+				<div tabIndex={1} className="dpfselect" onClick={() => setDdownValue('type')}>
 					<p>Type</p>
-					<img className={`${ddown.d1}`} src={Icons.Arrow} alt="arrow" />
+					<img src={Icons.Arrow} alt="arrow" />
 				</div>
-				<div className="dpfselect" onClick={() => Dropselection('d2')}>
+				<div tabIndex={2} className="dpfselect" onClick={() => setDdownValue('films')}>
 					<p>Films</p>
-					<img className={`${ddown.d2}`} src={Icons.Arrow} alt="arrow" />
+					<img src={Icons.Arrow} alt="arrow" />
 				</div>
-				{
-					SValue.type === 'people' &&
-					<>
-						<div className="dpfselect">
-							<p>Gender:</p>
-							<select name='gender' defaultValue={SValue.gender} onChange={(e) => filter(e)}>
-								<option value="any" selected>Any</option>
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-							</select>
-						</div>
-					</>
-				}
+				<div className={`dpfddlist`}>
+					{ filteropt[ddownvalue].map((item, key) => {
+						return (
+							<p key={key} onClick={() => Dropselection( ddownvalue, item )}>{item}</p>
+						)
+					})}
+				</div>
 			</div>
 			<div id="dpfcardscontainer">
 				{filtered.map((item, key) => {
