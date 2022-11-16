@@ -1,55 +1,152 @@
 #dpfoptions1 {
   position: relative;
+  width: 80%;
+  min-width: fit-content;
+  height: 3em;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 5px 10px;
+  align-items: center;
+  justify-content: left;
+  margin: auto;
+
+  .panim {
+    opacity: 0; scale: 0; translate: 0px -20px;
+  }
 }
 
 .dpfselect {
-  display: flex;
-  flex-direction: row;
-  gap: 60px;
+  display: flex; flex-direction: row;
+  align-items: center; justify-content: center; gap: 15px;
+  height: 100%; padding: 0px 10px; max-width: 100%; 
   border-bottom: 1px solid black;
   cursor: pointer;
 
-  p {
+  p { white-space: nowrap; }
+
+  .pstandby {
     color: #8f8f8f;
     transition: all 0.5s ease;
   }
+
+  .pshow {
+    color: black;
+    text-transform: capitalize;
+  }
+
   &:hover {
-    p {
+    .pstandby {
       color: black;
     }
   }
-  img {
+
+  &:focus {
+    .imgstandby {
+      rotate: 180deg;
+    }
+    ~.dpfddlist {
+      max-height: 500px;
+      opacity: 1;
+    }
+  }
+
+  .imgstandby {
     height: 20%;
     transition: all 0.5s ease-in-out;
   }
-  &:focus {
-    img {
-      rotate: 180deg;
-    }
-    ~ .dpfddlist {
-      opacity: 1;
-      max-height: 200px;
-    }
+
+  .imgshow {
+    height: 30%;
+    z-index: 100;
   }
 }
 
 .dpfddlist {
   position: absolute;
   top: calc(100% + 5px);
-  width: 70vw; max-height: 0px;
+  width: fit-content;
+  max-height: 0px;
   border-radius: 12px;
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   background: #ffffff;
   filter: drop-shadow(1px 1px 2px #b8b8b8);
-  display: flex; flex-direction: row; flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   overflow-y: hidden;
 
   p {
     background: linear-gradient(#e0e0e0, #b8b8b8);
     border-radius: 8px;
-    padding: 10px; margin: 5px !important;
+    padding: 10px;
+    margin: 5px !important;
     cursor: pointer;
     text-transform: capitalize;
   }
+}
+
+#dpfcontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+
+  p { margin: 0px; }
+
+  #dpfcardscontainer {
+    height: auto; width: 80%;
+    margin-top: 10px !important;
+    margin: auto; padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22em, 22em));
+    grid-auto-rows: 30em;
+    justify-content: center;
+
+    .pfcards {
+      margin: 5px 15px;
+      padding: 10px;
+      height: auto;
+      border-radius: 15px;
+      display: grid;
+      grid-template-rows: 59% 39%;
+      gap: 2%;
+    }
+
+    .dpfimage {
+      width: 80%;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .pfinfo {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      .pfseparator {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+#microdiv {
+  position: sticky;
+  min-width: 70px;
+  max-width: 80px;
+  min-height: 70px;
+  max-height: 80px;
+  width: 9vw;
+  height: 9vw;
+  bottom: 50px;
+  left: calc(50% - 2em);
 }

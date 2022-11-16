@@ -1,0 +1,233 @@
+{
+	"initialFilter": {
+		"type": "any", "films": "any", "gender": "any", "homeworld": "any", 
+		"species": "any", "hairColor": "any", "eyeColor": "any"
+	},
+	"filter-options": {
+			"type": [
+				"people",	"planets"
+			],
+			"films": [ 
+				"Episode 1", "Episode 2", "Episode 3", "Episode 4",	"Episode 5", "Episode 6"
+			],
+			"gender": [
+				"male", "female"
+			],
+			"homeworld": [
+				"tatooine", "naboo", "alderaan", "stewjon"
+			],
+			"species": [
+				"human", "droid"
+			],
+			"hairColor": [
+				"blond", "brown", "black", "light brown"
+			],
+			"eyeColor": [
+				"blue", "brown", "hazel", "gray-blue", "yellow"
+			],
+			"gravity": [
+				"1 standard"
+			]
+		},
+	"people": [
+		{
+			"type": "people",
+			"name": "Luke Skywalker",
+			"height": 1.72,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "human",
+			"hairColor": "blond",
+			"eyeColor": "blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "C-3PO",
+			"height": 1.71,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "droid",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/3/3f/C-3PO_TLJ_Card_Trader_Award_Card.png",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "R2-D2",
+			"height": 1.09,
+			"gender": "male",
+			"homeworld": "naboo",
+			"species": "droid",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/e/eb/ArtooTFA2-Fathead.png",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Darth Vader",
+			"height": 2.03,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "human",
+			"hairColor": "blond",
+			"eyeColor": "yellow",
+			"image": "https://vignette.wikia.nocookie.net/fr.starwars/images/3/32/Dark_Vador.jpg",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Leia Organa",
+			"height": 1.5,
+			"gender": "female",
+			"homeworld": "alderaan",
+			"species": "human",
+			"hairColor": "brown",
+			"eyeColor": "brown",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/f/fc/Leia_Organa_TLJ.png",
+			"films": [
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Owen Lars",
+			"height": 1.7,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "human",
+			"hairColor": "brown",
+			"eyeColor": "blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/e/eb/OwenCardTrader.png",
+			"films": [
+				"Episode 3",
+				"Episode 4"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Beru Whitesun lars",
+			"height": 1.65,
+			"gender": "female",
+			"homeworld": "tatooine",
+			"species": "human",
+			"hairColor": "brown",
+			"eyeColor": "blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/c/cc/BeruCardTrader.png",
+			"films": [
+				"Episode 2",
+				"Episode 3"
+			]
+		},
+		{
+			"type": "people",
+			"name": "R5-D4",
+			"height": 0.97,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "droid",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/c/cb/R5-D4_Sideshow.png",
+			"films": [
+				"Episode 2",
+				"Episode 4"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Biggs Darklighter",
+			"height": 1.83,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "human",
+			"hairColor": "black",
+			"eyeColor": "hazel",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/0/00/BiggsHS-ANH.png",
+			"films": [
+				"Episode 4"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Obi-Wan Kenobi",
+			"height": 1.82,
+			"gender": "male",
+			"homeworld": "stewjon",
+			"species": "human",
+			"hairColor": "light brown",
+			"eyeColor": "gray-blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/4/4e/ObiWanHS-SWE.jpg",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
+				"Episode 4",
+				"Episode 5"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Anakin Skywalker",
+			"height": 2.03,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "human",
+			"hairColor": "blond",
+			"eyeColor": "blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		}
+	],
+	"planets": [
+		{
+			"type": "planets",
+			"name": "Tatooine",
+			"diameter": "10465",
+			"climate": "arid",
+			"gravity": "1 standard",
+			"terrain": "desert",
+			"image": "https://comicvine.gamespot.com/a/uploads/scale_medium/0/9116/244075-98113-tatooine.jpg",
+			"films": [
+				"Episode 1",
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		}
+	]
+}
