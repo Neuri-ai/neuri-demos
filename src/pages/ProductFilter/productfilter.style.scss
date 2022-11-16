@@ -21,8 +21,9 @@
 .dpfselect {
   display: flex; flex-direction: row;
   align-items: center; justify-content: center; gap: 15px;
-  height: 100%; padding: 0px 10px; max-width: 100%; 
-  border-bottom: 1px solid black;
+  height: 100%; padding: 0px 10px; max-width: 100%;
+  background: radial-gradient(110% 100% at top,transparent 85%, #00000015);
+  border-bottom: 1px solid black; border-radius: 7px;
   cursor: pointer;
 
   p { white-space: nowrap; }
@@ -33,7 +34,7 @@
   }
 
   .pshow {
-    color: black;
+    color: #9203b6;
     text-transform: capitalize;
   }
 
@@ -111,21 +112,23 @@
       margin: 5px 15px;
       padding: 10px;
       height: auto;
-      border-radius: 15px;
       display: grid;
       grid-template-rows: 59% 39%;
       gap: 2%;
     }
 
     .dpfimage {
-      width: 80%;
+      width: 94%;
       justify-self: center;
       display: flex;
       justify-content: center;
       overflow: hidden;
+      background-color: #a5a5a5; border-radius: 8px;
     }
 
     .pfinfo {
+      width: 94%;
+      justify-self: center;
       display: flex;
       flex-direction: column;
       gap: 3px;
