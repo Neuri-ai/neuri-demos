@@ -24,12 +24,24 @@ const ProductFilter = () => {
 		}, { opacity: 1, scale: 1 })
 	}, [])
 
+	useEffect(() => {
+		if (SValue.type === 'any') return undefined
+		if (SValue.type === 'people') {
+			let tl = gsap.timeline()
+			let child = document.querySelectorAll('.panim')
+			tl.to(child[0], { duration: 0.3, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut })
+			tl.to(child[1], { duration: 0.3, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut }, "<0.1")
+			tl.to(child[2], { duration: 0.3, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut }, "<0.1")
+			tl.to(child[3], { duration: 0.3, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut }, "<0.1")
+			tl.to(child[4], { duration: 0.3, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut }, "<0.1")
+		}
+	}, [SValue.type])
+
 	const [ddownvalue, setDdownValue] = useState('type')
 	const filteropt = SWApi['filter-options']
 
 	const Dropselection = (opt1, opt2) => {
 		const newSValue = { ...SValue, [opt1]: opt2 }
-		setSValue(newSValue);
 
 		let newFilter = DataBase.sort(() => Math.random() - 0.5);
 
@@ -37,38 +49,29 @@ const ProductFilter = () => {
 		if (newSValue.films !== 'any') {
 			newFilter = newFilter.filter(obj => {
 				if (obj.films === undefined) return null
-				if (obj.films.includes(newSValue.films) === true) {
-					return obj
-				}
-			})
+				if (obj.films.includes(newSValue.films) === true) {	return obj }})
 		}
 		if ((newSValue.type === 'people' && newSValue.gender !== 'any')) newFilter = newFilter.filter(obj => { return obj.gender === newSValue.gender })
-		if ((newSValue.type === 'people' && newSValue.homeworld !== 'any')) newFilter = newFilter.filter(obj => { return obj.homeworld === newSValue.homeworld })
+		if ((newSValue.type === 'people' && newSValue.homeworld !== 'any')) newFilter = newFilter.filter(obj => {
+			if(obj.homeworld === undefined) return null 
+			if (obj.homeworld.includes(newSValue.homeworld) === true ) { console.log('entre'); return obj}})
 		if ((newSValue.type === 'people' && newSValue.species !== 'any')) newFilter = newFilter.filter(obj => { return obj.species === newSValue.species })
 		if ((newSValue.type === 'people' && newSValue.hairColor !== 'any')) newFilter = newFilter.filter(obj => { return obj.hairColor === newSValue.hairColor })
 		if ((newSValue.type === 'people' && newSValue.eyeColor !== 'any')) newFilter = newFilter.filter(obj => { return obj.eyeColor === newSValue.eyeColor })
 
-		setFiltered(newFilter)
-
-		if (newSValue.type === 'people') {
-			let tl = gsap.timeline()
-			let child = document.querySelectorAll('.panim')
-			tl.to(child[0], { duration:1, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut})
-			tl.to(child[1], { duration:1, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut}, "<0.1")
-			tl.to(child[2], { duration:1, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut}, "<0.1")
-			tl.to(child[3], { duration:1, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut}, "<0.1")
-			tl.to(child[4], { duration:1, opacity: 1, y: 0, scale: 1, ease: Power3.easeInOut}, "<0.1")
-
-		}
 		if (newSValue.type === 'any' || newSValue.type === 'planets') {
-			let tl = gsap.timeline()
+			let tl = gsap.timeline({ onComplete: () => setSValue(newSValue) })
 			let child = document.querySelectorAll('.panim')
-			tl.to(child[4], { duration: 1, opacity: 0, y: -20, scale: 0 , ease: Power3.easeInOut})
-			tl.to(child[3], { duration: 1, opacity: 0, y: -20, scale: 0 , ease: Power3.easeInOut}, "<0.1")
-			tl.to(child[2], { duration: 1, opacity: 0, y: -20, scale: 0 , ease: Power3.easeInOut}, "<0.1")
-			tl.to(child[1], { duration: 1, opacity: 0, y: -20, scale: 0 , ease: Power3.easeInOut}, "<0.1")
-			tl.to(child[0], { duration: 1, opacity: 0, y: -20, scale: 0 , ease: Power3.easeInOut}, "<0.1")
+			tl.to(child[4], { duration: 0.3, opacity: 0, y: -20, scale: 0, ease: Power3.easeInOut })
+			tl.to(child[3], { duration: 0.3, opacity: 0, y: -20, scale: 0, ease: Power3.easeInOut }, "<0.1")
+			tl.to(child[2], { duration: 0.3, opacity: 0, y: -20, scale: 0, ease: Power3.easeInOut }, "<0.1")
+			tl.to(child[1], { duration: 0.3, opacity: 0, y: -20, scale: 0, ease: Power3.easeInOut }, "<0.1")
+			tl.to(child[0], { duration: 0.3, opacity: 0, y: -20, scale: 0, ease: Power3.easeInOut }, "<0.1")
+			return setFiltered(newFilter)
 		}
+
+		setSValue(newSValue)
+		setFiltered(newFilter)
 	}
 
 	return (
@@ -91,46 +94,28 @@ const ProductFilter = () => {
 								<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection('films', 'any')} /> </>
 						}
 					</div>
-					<div tabIndex={2} className="dpfselect panim" onClick={() => setDdownValue('gender')}>
-						{(SValue.gender === 'any')
-							? <> <p className='pstandby'>Gender</p>
-								<img className='imgstandby' src={Icons.Arrow} alt="arrow" />	</>
-							: <> <p className='pshow'>{SValue.gender}</p>
-								<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection('gender', 'any')} /> </>
-						}
-					</div>
-					<div tabIndex={2} className="dpfselect panim" onClick={() => setDdownValue('homeworld')}>
-						{(SValue.homeworld === 'any')
-							? <> <p className='pstandby'>Home World</p>
-								<img className='imgstandby' src={Icons.Arrow} alt="arrow" />	</>
-							: <> <p className='pshow'>{SValue.homeworld}</p>
-								<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection('homeworld', 'any')} /> </>
-						}
-					</div>
-					<div tabIndex={2} className="dpfselect panim" onClick={() => setDdownValue('species')}>
-						{(SValue.species === 'any')
-							? <> <p className='pstandby'>Species</p>
-								<img className='imgstandby' src={Icons.Arrow} alt="arrow" />	</>
-							: <> <p className='pshow'>{SValue.species}</p>
-								<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection('species', 'any')} /> </>
-						}
-					</div>
-					<div tabIndex={2} className="dpfselect panim" onClick={() => setDdownValue('hairColor')}>
-						{(SValue.hairColor === 'any')
-							? <> <p className='pstandby'>Hair Color</p>
-								<img className='imgstandby' src={Icons.Arrow} alt="arrow" />	</>
-							: <> <p className='pshow'>{SValue.hairColor}</p>
-								<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection('hairColor', 'any')} /> </>
-						}
-					</div>
-					<div tabIndex={2} className="dpfselect panim" onClick={() => setDdownValue('eyeColor')}>
-						{(SValue.eyeColor === 'any')
-							? <> <p className='pstandby'>Eye Color</p>
-								<img className='imgstandby' src={Icons.Arrow} alt="arrow" />	</>
-							: <> <p className='pshow'>{SValue.eyeColor}</p>
-								<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection('eyeColor', 'any')} /> </>
-						}
-					</div>
+					{SValue.type === "people" &&
+						<>
+							{SWApi["mapfilters"]["people"].map((item, key) => {
+								return (
+									<div key={key} tabIndex={2} className="dpfselect panim" onClick={() => setDdownValue(item)}>
+										{(SValue[item] === 'any')
+											? <> <p className='pstandby'>
+												{item === 'gender' && 'Gender'}
+												{item === 'homeworld' && 'Home World'}
+												{item === 'species' && 'Species'}
+												{item === 'hairColor' && 'Hair Color'}
+												{item === 'eyeColor' && 'Eye Color'}
+												</p>
+												<img className='imgstandby' src={Icons.Arrow} alt="arrow" />	</>
+											: <> <p className='pshow'>{SValue[item]}</p>
+												<img className='imgshow' src={Icons.X} alt="x" onClick={() => Dropselection(item, 'any')} /> </>
+										}
+									</div>
+								)
+							})}
+						</>
+					}
 					<div className={`dpfddlist`}>
 						{filteropt[ddownvalue].map((item, key) => {
 							return (

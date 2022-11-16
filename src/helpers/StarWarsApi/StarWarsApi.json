@@ -3,32 +3,35 @@
 		"type": "any", "films": "any", "gender": "any", "homeworld": "any", 
 		"species": "any", "hairColor": "any", "eyeColor": "any"
 	},
+	"mapfilters": {
+		"people": [ "gender", "homeworld", "species", "hairColor", "eyeColor" ]
+	},
 	"filter-options": {
-			"type": [
-				"people",	"planets"
-			],
-			"films": [ 
-				"Episode 1", "Episode 2", "Episode 3", "Episode 4",	"Episode 5", "Episode 6"
-			],
-			"gender": [
-				"male", "female"
-			],
-			"homeworld": [
-				"tatooine", "naboo", "alderaan", "stewjon"
-			],
-			"species": [
-				"human", "droid"
-			],
-			"hairColor": [
-				"blond", "brown", "black", "light brown"
-			],
-			"eyeColor": [
-				"blue", "brown", "hazel", "gray-blue", "yellow"
-			],
-			"gravity": [
-				"1 standard"
-			]
-		},
+		"type": [
+			"people",	"planets"
+		],
+		"films": [ 
+			"Episode 1", "Episode 2", "Episode 3", "Episode 4",	"Episode 5", "Episode 6"
+		],
+		"gender": [
+			"male", "female"
+		],
+		"homeworld": [
+			"tatooine", "naboo", "alderaan", "stewjon", "eriadu", "kashyyyk", "corellia", "rodia", "bestine"
+		],
+		"species": [
+			"human", "droid", "wookiee", "rodian", "hutt"
+		],
+		"hairColor": [
+			"blond", "brown", "black", "light brown", "auburn", "white"
+		],
+		"eyeColor": [
+			"blue", "brown", "hazel", "gray-blue", "yellow", "purple", "orange", "green-gold"
+		],
+		"gravity": [
+			"1 standard"
+		]
+	},
 	"people": [
 		{
 			"type": "people",
@@ -207,6 +210,132 @@
 				"Episode 2",
 				"Episode 3",
 				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Wilhuff Tarkin",
+			"height": 1.82,
+			"gender": "male",
+			"homeworld": "eriadu",
+			"species": "human",
+			"hairColor": "auburn",
+			"eyeColor": "gray-blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/c/c1/Tarkininfobox.jpg",
+			"films": [
+				"Episode 3",
+				"Episode 4"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Chewbacca",
+			"height": 2.28,
+			"gender": "male",
+			"homeworld": "kashyyyk",
+			"species": "wookiee",
+			"hairColor": "brown",
+			"eyeColor": "blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/4/48/Chewbacca_TLJ.png",
+			"films": [
+				"Episode 3",
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Han Solo",
+			"height": 1.8,
+			"gender": "male",
+			"homeworld": "corellia",
+			"species": "human",
+			"hairColor": "brown",
+			"eyeColor": "hazel",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/e/e2/TFAHanSolo.png",
+			"films": [
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Greedo",
+			"height": 1.74,
+			"gender": "male",
+			"homeworld": [
+				"rodia",
+				"tatooine"
+			],
+			"species": "rodian",
+			"eyeColor": "purple",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/c/c6/Greedo.jpg",
+			"films": [
+				"Episode 1",
+				"Episode 4"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Jabba Desilijic Tiure",
+			"height": 3.9,
+			"gender": "male",
+			"homeworld": "tatooine",
+			"species": "hutt",
+			"eyeColor": "orange",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/7/7f/Jabba_SWSB.png",
+			"films": [
+				"Episode 1",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Wedge Antilles",
+			"height": 1.7,
+			"gender": "male",
+			"homeworld": "corellia",
+			"species": "human",
+			"hairColor": "brown",
+			"eyeColor": "brown",
+			"image": "https://th.bing.com/th/id/OIP.lZU_aWFrK4ihvg61umU5IwHaKl?pid=ImgDet&w=154&h=220&c=7",
+			"films": [
+				"Episode 4",
+				"Episode 5",
+				"Episode 6"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Jek Tono Porkins",
+			"height": 1.8,
+			"gender": "male",
+			"homeworld": "bestine",
+			"species": "human",
+			"hairColor": "brown",
+			"eyeColor": "blue",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/e/eb/JekPorkins-DB.png",
+			"films": [
+				"Episode 4"
+			]
+		},
+		{
+			"type": "people",
+			"name": "Yoda",
+			"height": 0.66,
+			"gender": "male",
+			"species": "yoda's species",
+			"hairColor": "white",
+			"eyeColor": "green-gold",
+			"image": "https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png",
+			"films": [
+				"Episode 1",
+				"Episode 2",
+				"Episode 3",
 				"Episode 5",
 				"Episode 6"
 			]
