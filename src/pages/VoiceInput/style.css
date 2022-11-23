@@ -2,7 +2,7 @@
 
 .dvscontainer {
   height: calc(100vh - 60px);
-  width: 100vw;
+  width: 100%; height: calc(100vh - 81px);
   display: grid;
   grid-template-rows: 84% 15%;
   gap: 1%;

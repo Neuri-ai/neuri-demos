@@ -13,9 +13,6 @@
   justify-content: left;
   margin: auto;
 
-  .panim {
-    opacity: 0; scale: 0; translate: 0px -20px;
-  }
 }
 
 .dpfselect {
@@ -24,6 +21,7 @@
   height: 100%; padding: 0px 10px; max-width: 100%;
   background: radial-gradient(110% 100% at top,transparent 85%, #00000015);
   border-bottom: 1px solid black; border-radius: 7px;
+  opacity: 0; scale: 0; translate: 0px -20px;
   cursor: pointer;
 
   p { white-space: nowrap; }
@@ -68,7 +66,7 @@
 .dpfddlist {
   position: absolute;
   top: calc(100% + 5px);
-  width: fit-content;
+  width: 90%;
   max-height: 0px;
   border-radius: 12px;
   opacity: 0;

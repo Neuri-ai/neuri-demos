@@ -31,7 +31,7 @@ const URL = `wss://api.neuri.ai/api/apha/v1/services/audio/realtime?apikey=${API
 let recorder;
 let socket;
 
-const VoiceSearch = () => {
+const VoiceInput = () => {
   const [microText, setText] = useState("");
   const [isRecording, setRecording] = useState(true);
   const [messages, setMessages] = useState(initialtexttest);
@@ -186,4 +186,4 @@ const VoiceSearch = () => {
     </div>
   );
 };
-export default VoiceSearch;
+export default VoiceInput;

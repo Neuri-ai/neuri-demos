@@ -2,20 +2,20 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import FormFill from 'pages/FormFill'
-import ProductFilter from 'pages/ProductFilter'
+import VoiceFilter from 'pages/VoiceFilter'
 import VoiceCommands from 'pages/VoiceCommands'
-import VoiceSearch from 'pages/VoiceSearch'
+import VoiceInput from 'pages/VoiceInput'
 import Navbar from "components/Navbar";
-
 
 const demosPaths = [
 	{ path: '/demos/form-fill', name: 'Voice Form Filling'},
-	{ path: '/demos/product-filter', name: 'Voice Filtering'},
+	{ path: '/demos/voice-filter', name: 'Voice Filtering'},
 	//{ path: '/demos/voice-commands', name: 'Voice Commands'},
-	{ path: '/demos/voice-search', name: 'Voice Input'},
+	{ path: '/demos/voice-input', name: 'Voice Input'},
 ]
 
 const App = () => {
@@ -27,11 +27,11 @@ const App = () => {
 
         <Switch>
           <Route path="/demos/form-fill" component={FormFill}/>
-          <Route path="/demos/product-filter" component={ProductFilter}/>
+          <Route path="/demos/voice-filter" component={VoiceFilter}/>
           <Route path="/demos/voice-commands" component={VoiceCommands}/>
-          <Route path="/demos/voice-search" component={VoiceSearch}/>
+          <Route path="/demos/voice-input" component={VoiceInput}/>
           <Route exact path="/">
-            <h1>Home</h1>
+            <Redirect to="/demos/voice-input" />
           </Route>
         </Switch>
       </div>
