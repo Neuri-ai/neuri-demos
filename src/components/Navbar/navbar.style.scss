@@ -52,7 +52,7 @@
     }
   }
 
-  #demo-menu:focus + .demoslist {
+  #demo-menu:focus ~ .demoslist {
     max-height: 300px;
   }
 
