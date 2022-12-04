@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
 import shortid from "shortid";
-import { Icons, Microphone } from "helpers/iconscall";
+import { Icons } from "helpers/iconscall";
 import "./style.css";
-
 
 // import RecordRTC from "recordrtc";
 import RecordRTC, { StereoAudioRecorder } from "recordrtc";
@@ -92,6 +91,7 @@ const VoiceInput = () => {
         // try parsing the message as JSON if it fails, it's the connection state
         try {
           const res = JSON.parse(event.data);
+          console.log(res)
           if (res.isFinal === false) {
             setText(res.transcription);
           }
@@ -132,6 +132,7 @@ const VoiceInput = () => {
           setImgClass('active')
           recorder = RecordRTC(stream, {
             type: "audio",
+            disableLogs: true,
             recorderType: StereoAudioRecorder,
             mimeType: "audio/wav",
             numberOfAudioChannels: 1,
@@ -163,7 +164,6 @@ const VoiceInput = () => {
       };
     }
   };
-
   return (
     <div className="dvscontainer">
       <div className="dvschatcontainer">
@@ -180,7 +180,7 @@ const VoiceInput = () => {
       <div className="chatinput">
         <p>{microText}</p>
         <div id="vsmicrodiv" onClick={() => run()}>
-          <NMicrophone state={imgClass} />
+          <NMicrophone state={imgClass} options={{ size: '60px' }} />
         </div>
       </div>
     </div>

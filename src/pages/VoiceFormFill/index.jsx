@@ -5,12 +5,8 @@ import './formfill.style.scss';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 
-const FormFill = () => {
+const VoiceFormFill = () => {
 	const [imgClass, setImgClass] = useState('')
-
-	const Matriz = () => {
-		
-	}
 
 	useEffect(() => {
 		let tl = gsap.timeline();
@@ -63,4 +59,4 @@ const FormFill = () => {
 		</>
 	)
 }
-export default FormFill
+export default VoiceFormFill

@@ -6,6 +6,9 @@
   border: 0px solid var(--black);
   border-radius: 8px;
   filter: drop-shadow(0px 0px 3px grey);
+  @media only screen and (max-width: 600px) {
+    width: 90%; padding: 10px;
+  }
 }
 
 #DemoFFGrid {
@@ -13,6 +16,10 @@
   grid-template-columns: 49% 49%;
   column-gap: 2%;
   row-gap: 20px;
+
+  @media only screen and (max-width: 600px) {
+    display: flex; flex-direction: column;
+  }
 
   #DFG1, #DFG2 {
     width: 100%;
@@ -22,6 +29,10 @@
     align-items: center;
     border: 2px solid var(--inplabel);
     border-radius: 10px;
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 
   input[type=text] {
@@ -30,9 +41,41 @@
     height: 80%;
     border: none;
     padding-left: 10px;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%; height: 100%;
+    }
     &:focus {
       outline: none;
     }
+  }
+
+  p {
+    background-color: var(--inplabel);
+    height: 100%;
+    margin: 0;
+    padding: 10px 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}
+
+#DFG3 {
+  grid-column: 1/3;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 49% 49%;
+  gap: 2%;
+
+  @media only screen and (max-width: 600px) {
+    display: flex; flex-direction: column; row-gap: 20px;
   }
 }
 
@@ -47,6 +90,10 @@
   font-family: 'Poppins';
   font-weight: 600;
   justify-self: flex-end;
+
+  @media only screen and (max-width: 600px) {
+    align-self: flex-end;
+  }
 }
 
 #vffnmicro {

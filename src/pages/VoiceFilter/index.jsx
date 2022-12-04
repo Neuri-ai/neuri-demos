@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import SWApi from "helpers/StarWarsApi/StarWarsApi.json";
-import NMicrophone from 'components/Microphone';
+import NeuriMicro from 'components/Microphone';
 import { Icons } from 'helpers/iconscall'
+import custommicro from '../../assets/icons/microfono.png'
 import './voicefilter.style.scss';
 import { gsap, Power3 } from 'gsap';
 
@@ -9,7 +10,7 @@ const VoiceFilter = () => {
 	const [SValue, setSValue] = useState(SWApi["initialFilter"])
 	const DataBase = [...SWApi["people"]]
 	const [filtered, setFiltered] = useState(DataBase.sort(() => Math.random() - 0.5))
-	const [imgClass, setImgClass] = useState('')
+	const [microState, setMicroState] = useState(false)
 
 	useEffect(() => {
 		let tl = gsap.timeline();
@@ -118,8 +119,9 @@ const VoiceFilter = () => {
 					})}
 				</div>
 			</div>
-			<div id="microdiv" onClick={() => setImgClass(imgClass === '' ? 'active' : '')}>
-				<NMicrophone state={imgClass} />
+			<div className="drawer"><p>prueba</p></div>
+			<div id="microdiv" onClick={() => setMicroState(microState ? false : true)}>
+				<NeuriMicro state={microState} />
 			</div>
 		</>
 	)

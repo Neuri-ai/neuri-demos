@@ -1,12 +1,29 @@
 #nmicrocontainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  &.top-left { position: absolute; top: 0%; left: 0%; }
+  &.top { position: absolute; top: 0%; left: 50%; }
+  &.top-right { position: absolute; top: 0%; right: 0%; }
+  &.center-left { position: absolute; top: 50%; left: 0%; }
+  &.center { position: absolute; top: 50%; left: 50%; }
+  &.center-right { position: absolute; top: 50%; right: 0%; }
+  &.bottom-left { position: absolute; bottom: 0%; left: 0%; }
+  &.bottom { position: absolute; bottom: 0%; left: 50%; }
+  &.bottom-right { position: absolute; bottom: 0%; right: 0%; }
+  &.slave { margin: auto; }
+  #nmicropos {
+    padding-top: 100%;
+    position: relative;
+  }
+}
+
+#nmicrosubcontainer {
+  position: absolute; top: 0;
+  height: 100%; width: 100%;
   scale: 0.9;
   cursor: pointer;
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   #nml1, #nml2,#nml3, #nml4, #nml5 {
-    position: absolute;
+    position: absolute; top: 0%; bottom: 0%; left: 0%; right: 0%;
+    transform-origin: 50% 50%;
   }
   &.active {
     scale: 1.1;
@@ -14,14 +31,24 @@
 }
 
 #nml1 {
-  transform-origin: 50% 50%;
-  width: 100%;
-  height: 100%;
   opacity: 1;
   scale: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, #c2c1c1, transparent 100%),
+  radial-gradient(circle at 0% 50%, #5c5c5c, transparent 100%),
+  radial-gradient(circle at 100% 50%, #5c5c5c, transparent 100%),
+  radial-gradient(circle at 50% 100%, #5c5c5c, transparent 100%);
   animation: rotate 4s linear infinite;
   z-index: 1;
   transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &::after {
+    content: '';
+    position: absolute;
+    display: block; border-radius: 50%;
+    height: 89%; width: 89%;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background-color: white;
+  }
   &.active {
     scale: 0.5;
     opacity: 0;
@@ -128,7 +155,6 @@
   scale: 1;
   z-index: 4;
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-
   &.active {
     opacity: 1;
     animation: rotate 4s linear infinite;

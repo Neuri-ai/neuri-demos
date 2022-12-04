@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .dvscontainer {
-  height: calc(100vh - 60px);
   width: 100%; height: calc(100vh - 81px);
   display: grid;
   grid-template-rows: 84% 15%;
@@ -21,7 +20,7 @@
 .dvschatcontainer {
   position: relative;
   background-color: white;
-  margin: auto auto;
+  margin: 20px auto;
   padding: 40px;
   width: 90%;
   height: 95%;
@@ -89,6 +88,13 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .dvscontainer {
+    width: 100%; height: calc(100vh - 81px);
+    display: grid;
+    grid-template-rows: 74% 15%;
+    gap: 1%;
+  }
+  
   .chatinput {
     box-shadow: 2px 2px 5px gray;
     background-color: white;
@@ -129,4 +135,5 @@
   min-width: 60px; max-width: 70px;
   min-height: 60px; max-height: 70px;
   border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
 }

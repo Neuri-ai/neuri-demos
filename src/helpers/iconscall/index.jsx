@@ -8,27 +8,6 @@ export const Icons = {
   User: require('icons/gato.png'),
 }
 
-export const MicroBase = () => {
-  return (
-    <svg version="1.1" viewBox="0 0 132.29 132.29">
-      <defs>
-        <linearGradient id="linearGradient995" x2="132.29" y1="66.146" y2="66.146" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#6a6a6a" offset="0" />
-          <stop stopColor="#a2a2a2" offset=".49254" />
-          <stop stopColor="#c0c0c0" offset=".86404" />
-          <stop stopColor="#e5e5e5" offset="1" />
-        </linearGradient>
-      </defs>
-      <g transform="matrix(.98 0 0 .98 1.3229 1.3229)">
-        <circle cx="66.146" cy="66.146" r="66.146" fill="#fff" strokeWidth=".26458" />
-      </g>
-      <g>
-        <path d="m66.146 0a66.146 66.146 0 0 0-66.146 66.146 66.146 66.146 0 0 0 66.146 66.146 66.146 66.146 0 0 0 66.146-66.146 66.146 66.146 0 0 0-66.146-66.146zm0 7.6677a58.478 58.478 0 0 1 58.478 58.478 58.478 58.478 0 0 1-58.478 58.478 58.478 58.478 0 0 1-58.478-58.478 58.478 58.478 0 0 1 58.478-58.478z" fill="url(#linearGradient995)" strokeWidth=".26458" />
-      </g>
-    </svg>
-  )
-}
-
 export const Microphone = () => {
   return (
     <svg width=".491" height="1" version="1.1" viewBox="0 0 .491 1">
