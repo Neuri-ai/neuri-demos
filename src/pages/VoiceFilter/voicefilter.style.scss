@@ -123,12 +123,17 @@
     }
 
     .dpfimage {
-      width: 94%;
+      width: 90%;
+      height: auto;
       justify-self: center;
       display: flex;
       justify-content: center;
       overflow: hidden;
       background-color: #a5a5a5; border-radius: 8px;
+      
+      img {
+        height: 100%;
+      }
     }
 
     .pfinfo {
