@@ -1,14 +1,38 @@
+/* Desktop */
+@media all and (min-width: 1281px){
+  #DemoFFSection {
+    width: 70vw; padding: 30px;
+  }
+}
+
+/* Tablet landscape */
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+  #DemoFFSection {
+    width: 80%; padding: 10px;
+  }
+}
+
+/* Tablet */
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  #DemoFFSection {
+    width: 90%; padding: 10px;
+  }
+ }
+
+ /* Phone */
+@media all and (max-width: 768px) {
+  #DemoFFSection {
+    width: 90%; padding: 10px;
+  }
+}
+
 #DemoFFSection {
+  overflow-y: auto;
   background-color: white;
-  width: 70vw;
   margin: 3% auto;
-  padding: 30px;
   border: 0px solid var(--black);
   border-radius: 8px;
   filter: drop-shadow(0px 0px 3px grey);
-  @media only screen and (max-width: 600px) {
-    width: 90%; padding: 10px;
-  }
 }
 
 #DemoFFGrid {

@@ -1,9 +1,30 @@
 #dnnavbarcontainer {
-  background: #2C354F;
+  z-index: 99;
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+     -75deg,
+     #576F72 0%,
+     #125374 10%,
+     #2C354F 50%,
+     #125374 90%,
+     #576F72 100%
+  );
+  animation: animnavbar 14s ease infinite;
   height: 80px;
   width: 100%;
-  z-index: 80;
   
+  @keyframes animnavbar { 
+    0%{background-position:30% 50%}
+    50%{background-position:70% 50%}
+    100%{background-position:30% 50%}
+  }
+
+  @media all and (max-width: 1280px) {
+    height: 60px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
   #dnnavbar {
     position: relative;
     width: 90%;

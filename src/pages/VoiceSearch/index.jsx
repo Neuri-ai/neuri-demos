@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import NeuriDrawer from "../../components/Drawer";
 import NeuriMicro from "../../components/Microphone";
 import './voicesearch.style.scss'
 
@@ -10,7 +11,7 @@ const VoiceSearch = () => {
   const [fData, setFData] = useState([])
 
   const FetchData = () => {
-    axios.get(` https://www.googleapis.com/customsearch/v1?key=${ApiKey}&cx=${CxKey}&q=${value}`).then(data => {
+    axios.get(` https://www.googleapis.com/customsearch/v1?key=${ApiKey}&cx=${CxKey}&q=${value}face`).then(data => {
       setFData(data.data.items)
       console.log(data.data.items)
     }).catch(error => {
@@ -18,9 +19,11 @@ const VoiceSearch = () => {
     })
   }
   return (
-    <>
+    <section id="sectionvsearch">
       <div id="searchdiv">
-        <input type='text' value={value} onChange={(e) => setValue(e.currentTarget.value)}></input>
+        <NeuriDrawer props={{
+          transcription: 'test'
+        }} />
         <div id="voicesearchmicro" onClick={() => FetchData()}>
           <NeuriMicro state={false} options={{ size: '100%'}} />
         </div>
@@ -43,7 +46,7 @@ const VoiceSearch = () => {
           })
         }
       </ul>
-    </>
+    </section>
   )
 }
 export default VoiceSearch

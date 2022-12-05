@@ -1,3 +1,8 @@
+#sectionvfilter {
+  position: relative;
+  width: 100%; height: calc(100vh - 80px);
+}
+
 #dpfoptions1 {
   position: relative;
   width: 80%;
@@ -95,15 +100,15 @@
 }
 
 #dpfcontainer {
-  display: flex;
-  flex-direction: column;
+  height: 100%; width: 100%;
+  display: grid; grid-template-rows: 7% 92%;
   padding: 1em;
 
   p { margin: 0px; }
 
   #dpfcardscontainer {
     position: relative;
-    height: auto; width: 80%;
+    height: 98%; width: 80%;
     margin-top: 10px !important;
     margin: auto; padding: 10px;
     background-color: white;
@@ -112,6 +117,14 @@
     grid-template-columns: repeat(auto-fill, minmax(22em, 22em));
     grid-auto-rows: 30em;
     justify-content: center;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #212121;
+    }
 
     .pfcards {
       margin: 5px 15px;
@@ -153,21 +166,16 @@
 }
 
 #microdiv {
-  position: sticky;
+  position: absolute;
   bottom: 60px;
   left: calc(50% - 2em);
   width: 80px; height: 80px;
   border-radius: 50%;
 }
 
-.drawer {
-  position: sticky; bottom: 90vh;
-  height: fit-content; width: fit-content;
-  background-color: #212121;
-  padding: 7px; border-radius: 8px;
-
-  p {
-    font-size: 1.3rem;
-    color: white;
-  }
+#drawerdiv {
+  position: absolute;
+  bottom: 160px;
+  left: calc(50%);
+  width: fit-content; height: auto;
 }

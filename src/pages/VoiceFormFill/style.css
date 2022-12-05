@@ -8,14 +8,6 @@
   --black: #5c5c5c;
 }
 
-body {
-  background-color: var(--ch1) !important;
-}
-
-p, label {
-  font-family: 'Poppins';
-}
-
 .off {
   display: flex;
   flex-direction: column;

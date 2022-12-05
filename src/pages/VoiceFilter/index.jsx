@@ -5,6 +5,7 @@ import { Icons } from 'helpers/iconscall'
 import custommicro from '../../assets/icons/microfono.png'
 import './voicefilter.style.scss';
 import { gsap, Power3 } from 'gsap';
+import NeuriDrawer from '../../components/Drawer';
 
 const VoiceFilter = () => {
 	const [SValue, setSValue] = useState(SWApi["initialFilter"])
@@ -61,7 +62,7 @@ const VoiceFilter = () => {
 	}
 
 	return (
-		<>
+		<section id='sectionvfilter'>
 			<div id="dpfcontainer">
 				<div id="dpfoptions1">
 					<div tabIndex={2} className="dpfselect" onClick={() => setDdownValue('films')}>
@@ -119,11 +120,13 @@ const VoiceFilter = () => {
 					})}
 				</div>
 			</div>
-			<div className="drawer"><p>prueba</p></div>
 			<div id="microdiv" onClick={() => setMicroState(microState ? false : true)}>
 				<NeuriMicro state={microState} />
 			</div>
-		</>
+			<div id="drawerdiv">
+				<NeuriDrawer props={{transcription: 'test'}}/>
+			</div>
+		</section>
 	)
 }
 export default VoiceFilter
