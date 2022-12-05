@@ -10,22 +10,18 @@ import NMicrophone from "../../components/Microphone";
 
 const initialtexttest = [
   {
-    message: "Hola",
+    message: "Hi",
     pos: "izq",
   },
   {
-    message: "Esto es una prueba",
+    message: "How can i help you?",
     pos: "izq",
-  },
-  {
-    message: "Mensajes de Prueba 2",
-    pos: "der",
   },
 ];
 
-const API_KEY = "1CV7SkQtkxT3gfeI42kTJY7uQlSfW24Kng";
+const API_KEY = "LHfyH9zSH1CMXCfew3vjsGOhFRSW78sL_w";
 const SAMPLE_RATE = 16000;
-const LANG = "es-mx";
+const LANG = "en-us";
 const URL = `wss://api.neuri.ai/api/apha/v1/services/audio/realtime?apikey=${API_KEY}&sample_rate=${SAMPLE_RATE}&lang=${LANG}`;
 let recorder;
 let socket;
@@ -91,7 +87,6 @@ const VoiceInput = () => {
         // try parsing the message as JSON if it fails, it's the connection state
         try {
           const res = JSON.parse(event.data);
-          console.log(res)
           if (res.isFinal === false) {
             setText(res.transcription);
           }
@@ -113,7 +108,6 @@ const VoiceInput = () => {
 
       // handle errors
       socket.onerror = (error) => {
-        console.log(error);
         socket.close();
         setImgClass('')
         socket = null;
@@ -121,8 +115,8 @@ const VoiceInput = () => {
 
       // handle closing the socket
       socket.onclose = (event) => {
-        console.log(event);
         setImgClass('')
+        console.log(event)
         socket = null; // clean of memory
       };
 
