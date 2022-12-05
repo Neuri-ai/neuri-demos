@@ -8,7 +8,7 @@ import { gsap, Power3 } from "gsap";
 import NeuriDrawer from "components/Drawer";
 import RecordRTC, { StereoAudioRecorder } from "recordrtc";
 
-const API_KEY = "LHfyH9zSH1CMXCfew3vjsGOhFRSW78sL_w";
+const API_KEY = "3oHB_roFKsI_sjxzjE_C1CeNFxpvhr57PQ";
 const SAMPLE_RATE = 16000;
 const LANG = "en-us";
 const URL = `wss://api.neuri.ai/api/apha/v1/services/audio/realtime?apikey=${API_KEY}&sample_rate=${SAMPLE_RATE}&lang=${LANG}`;
@@ -21,7 +21,7 @@ const VoiceFilter = () => {
   const [filtered, setFiltered] = useState(
     DataBase.sort(() => Math.random() - 0.5)
   );
-  const [trans, setTrans] = useState('');
+  const [trans, setTrans, transRef] = useState([{ color: false, value: 'Listening...' }]);
   const [isRecording, setRecording] = useState(true);
 
   useEffect(() => {
@@ -85,10 +85,22 @@ const VoiceFilter = () => {
   const [ddownvalue, setDdownValue] = useState("type");
   const filteropt = SWApi["filter-options"];
 
-  const Dropselection = (opt1, opt2) => {
-    console.log(opt1, opt2);
-    const newSValue = { ...SValue, [opt1]: opt2 };
-
+  const Dropselection = async ( opt1, opt2, props ) => {
+    let newSValue = {};
+    console.log(props)
+    if( props !== undefined ) { props.forEach( element => {
+      if ( element.name === 'films' && !filteropt.films.includes( element.value ) ) return console.log('te pille esponja')
+      if ( element.name === 'gender' && !filteropt.gender.includes( element.value ) ) return console.log('te pille esponja')
+      if ( element.name === 'homeworld' && !filteropt.homeworld.includes( element.value ) ) return console.log('te pille esponja')
+      if ( element.name === 'species' && !filteropt.species.includes( element.value ) ) return console.log('te pille esponja')
+      if ( element.name === 'hairColor' && !filteropt.hairColor.includes( element.value ) ) return console.log('te pille esponja')
+      if ( element.name === 'eyeColor' && !filteropt.eyeColor.includes( element.value ) ) return console.log('te pille esponja')
+      newSValue = { ...SValue, ...newSValue, [element.name]: element.value }
+    }) }
+    if ( Object.keys(newSValue).length <= 0) {newSValue = SWApi["initialFilter"]}
+    console.log(newSValue)
+    if( props === undefined ) { newSValue = { ...SValue, [opt1]: opt2 } }
+    
     let newFilter = DataBase.sort(() => Math.random() - 0.5);
 
     if (newSValue.films !== "any") {
@@ -101,29 +113,42 @@ const VoiceFilter = () => {
     }
     if (newSValue.gender !== "any")
       newFilter = newFilter.filter((obj) => {
-        return obj.gender === newSValue.gender;
+        if (obj.gender === undefined) return null;
+        if (obj.gender.includes(newSValue.gender) === true) {
+          return obj;
+        }
       });
     if (newSValue.homeworld !== "any")
       newFilter = newFilter.filter((obj) => {
         if (obj.homeworld === undefined) return null;
         if (obj.homeworld.includes(newSValue.homeworld) === true) {
-          console.log("entre");
           return obj;
         }
       });
     if (newSValue.species !== "any")
       newFilter = newFilter.filter((obj) => {
-        return obj.species === newSValue.species;
+        if (obj.species === undefined) return null;
+        if (obj.species.includes(newSValue.species) === true) {
+          return obj;
+        }
       });
     if (newSValue.hairColor !== "any")
       newFilter = newFilter.filter((obj) => {
-        return obj.hairColor === newSValue.hairColor;
+        if (obj.hairColor === undefined) return null;
+        if (obj.hairColor.includes(newSValue.hairColor) === true) {
+          return obj;
+        }
       });
-    if (newSValue.eyeColor !== "any")
+    if (newSValue.eyeColor !== "any") {
       newFilter = newFilter.filter((obj) => {
-        return obj.eyeColor === newSValue.eyeColor;
+        if (obj.eyeColor === undefined) return null;
+        if (obj.eyeColor.indexOf(newSValue.eyeColor) !== -1) {
+          return obj
+        }
+        return obj
       });
 
+    }
     setSValue(newSValue);
     setFiltered(newFilter);
   };
@@ -153,16 +178,27 @@ const VoiceFilter = () => {
         // try parsing the message as JSON if it fails, it's the connection state
         try {
           const res = JSON.parse(event.data);
+          let sublist = [];
           if (res.isFinal === false) {
-            console.log(res);
-            setTrans(res.transcription)
+            sublist = res.entities.map(element => {
+              if ( element.name === 'hairColor' ) return { color: true, value: element.value, name: element.name }
+              if ( element.name === 'species' ) return { color: true, value: element.value, name: element.name }
+              if ( element.name === 'gender' ) return { color: true, value: element.value, name: element.name }
+              return { color: false, value: element.value, name: element.name }
+            });
+            setTrans(sublist)
           }
           if (res.isFinal === true) {
-            console.log(res);
-            setTrans(res.transcription)
+            sublist = res.entities.map(element => {
+              if ( element.name === 'hairColor' ) return { color: true, value: element.value, name: element.name }
+              if ( element.name === 'species' ) return { color: true, value: element.value, name: element.name }
+              if ( element.name === 'gender' ) return { color: true, value: element.value, name: element.name }
+              return { color: false, value: element.value, name: element.name }
+            });
+            Dropselection( '', '', sublist )
           }
         } catch (e) {
-          console.log(event.data);
+          console.log(e);
         }
       };
 
@@ -175,6 +211,7 @@ const VoiceFilter = () => {
       // handle closing the socket
       socket.onclose = (event) => {
         socket = null; // clean of memory
+        setTrans([{ color: false, value: 'Listening...' }])
       };
 
       // this function is called when the websocket is opened

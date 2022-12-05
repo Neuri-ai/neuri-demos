@@ -14,20 +14,24 @@ const NeuriDrawer = ({ props }) => {
     if ( props.position === 'bottom-right' ) return 'ndbottom-right'
   }
 
-  const state = () => {
+  const State = () => {
     if ( props?.state && props.state === true ) return 'show'
     return 'hide'
   }
 
   const NDConfig = {
-    transcription: props?.transcription ? props.transcription : 'listening...',
+    transcription: props.transcription,
     position: Position(),
-    state: state()
+    state: State()
   }
   
   return(
     <div id="ndrawercont" className={`${NDConfig.position} ${NDConfig.state}`}>
-      <p>{NDConfig.transcription}</p>
+      {NDConfig.transcription.map((object, key) => {
+        return (
+          <p key={key} className={ object.color ? 'color' : '' }>{object.value}</p>
+        )
+      })}
     </div>
   )
 }
