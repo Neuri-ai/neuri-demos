@@ -21,7 +21,7 @@ const VoiceFilter = () => {
   const [filtered, setFiltered] = useState(
     DataBase.sort(() => Math.random() - 0.5)
   );
-  const [microState, setMicroState] = useState(false);
+  const [trans, setTrans] = useState('');
   const [isRecording, setRecording] = useState(true);
 
   useEffect(() => {
@@ -155,9 +155,11 @@ const VoiceFilter = () => {
           const res = JSON.parse(event.data);
           if (res.isFinal === false) {
             console.log(res);
+            setTrans(res.transcription)
           }
           if (res.isFinal === true) {
             console.log(res);
+            setTrans(res.transcription)
           }
         } catch (e) {
           console.log(event.data);
@@ -350,10 +352,10 @@ const VoiceFilter = () => {
         id="microdiv"
         onClick={() => run()}
       >
-        <NeuriMicro state={microState} />
+        <NeuriMicro state={!isRecording} />
       </div>
       <div id="drawerdiv">
-        <NeuriDrawer props={{ transcription: "", state: microState }} />
+        <NeuriDrawer props={{ transcription: trans, state: !isRecording }} />
       </div>
     </section>
   );

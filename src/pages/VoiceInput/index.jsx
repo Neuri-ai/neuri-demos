@@ -115,7 +115,7 @@ const VoiceInput = () => {
 
       // handle closing the socket
       socket.onclose = (event) => {
-        setImgClass('')
+        setImgClass(false)
         console.log(event)
         socket = null; // clean of memory
       };
@@ -123,7 +123,7 @@ const VoiceInput = () => {
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-          setImgClass('active')
+          setImgClass(true)
           recorder = RecordRTC(stream, {
             type: "audio",
             disableLogs: true,
