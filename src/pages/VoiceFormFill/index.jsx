@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import NMicrophone from 'components/Microphone';
+import NeuriDrawer from 'components/Drawer';
 import './style.css';
 import './formfill.style.scss';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 
 const VoiceFormFill = () => {
-	const [imgClass, setImgClass] = useState('')
+	const [state, setState] = useState(false)
 
 	useEffect(() => {
 		let tl = gsap.timeline();
@@ -53,9 +54,14 @@ const VoiceFormFill = () => {
 					<button type="submit" id='dffsbtn'>Search</button>
 				</form>
 			</section>
-			<div id="vffnmicro" onClick={() => setImgClass( imgClass === '' ? 'active' : '' )}>
-				<NMicrophone state={imgClass} />
+			<div id="vffnmicro" onClick={() => setState( state ? false : true )}>
+				<NMicrophone state={state} />
 			</div>
+			<NeuriDrawer props={{
+				transcription: '',
+				position: 'top-left',
+				state: state
+			}} />
 		</>
 	)
 }

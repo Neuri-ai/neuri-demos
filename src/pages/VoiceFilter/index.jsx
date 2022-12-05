@@ -5,7 +5,7 @@ import { Icons } from 'helpers/iconscall'
 import custommicro from '../../assets/icons/microfono.png'
 import './voicefilter.style.scss';
 import { gsap, Power3 } from 'gsap';
-import NeuriDrawer from '../../components/Drawer';
+import NeuriDrawer from 'components/Drawer';
 
 const VoiceFilter = () => {
 	const [SValue, setSValue] = useState(SWApi["initialFilter"])
@@ -124,7 +124,7 @@ const VoiceFilter = () => {
 				<NeuriMicro state={microState} />
 			</div>
 			<div id="drawerdiv">
-				<NeuriDrawer props={{transcription: 'test'}}/>
+				<NeuriDrawer props={{transcription: '', state: microState }}/>
 			</div>
 		</section>
 	)

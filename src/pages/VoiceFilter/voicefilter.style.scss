@@ -168,7 +168,7 @@
 #microdiv {
   position: absolute;
   bottom: 60px;
-  left: calc(50% - 2em);
+  left: calc(50% - 40px);
   width: 80px; height: 80px;
   border-radius: 50%;
 }
@@ -176,6 +176,6 @@
 #drawerdiv {
   position: absolute;
   bottom: 160px;
-  left: calc(50%);
+  left: 50%; transform: translate(-50%, 0%);
   width: fit-content; height: auto;
 }

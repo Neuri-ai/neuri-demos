@@ -22,8 +22,8 @@ const VoiceSearch = () => {
   const [isRecording, setRecording] = useState(true);
 
 
-  const FetchData = () => {
-    axios.get(` https://www.googleapis.com/customsearch/v1?key=${ApiKey}&cx=${CxKey}&q=${value}face`).then(data => {
+  const FetchData = async ( datatosearch ) => {
+    await axios.get(` https://www.googleapis.com/customsearch/v1?key=${ApiKey}&cx=${CxKey}&q=${datatosearch}`).then(data => {
       setFData(data.data.items)
       console.log(data.data.items)
     }).catch(error => {
@@ -51,7 +51,7 @@ const VoiceSearch = () => {
       socket = new WebSocket(URL);
 
       // this function is called when the websocket receives a message
-      socket.onmessage = (event) => {
+      socket.onmessage = async (event) => {
         // the first message is the connection state
         // try parsing the message as JSON if it fails, it's the connection state
         try {
@@ -61,6 +61,7 @@ const VoiceSearch = () => {
           }
           if (res.isFinal === true) {
             setValue(res.transcription);
+            await FetchData(res.transcription);
           }
         } catch (e) {
           console.log(event.data);
@@ -119,11 +120,9 @@ const VoiceSearch = () => {
   return (
     <section id="sectionvsearch">
       <div id="searchdiv">
-        <NeuriDrawer props={{
-          transcription: value
-        }} />
+        <p>{value}</p>
         <div id="voicesearchmicro" onClick={() => run()}>
-          <NeuriMicro state={false} options={{ size: '100%'}} />
+          <NeuriMicro state={!isRecording} options={{ size: '100%'}} />
         </div>
       </div>
       <ul id="searchedcontainer">

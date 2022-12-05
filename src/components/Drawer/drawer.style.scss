@@ -1,5 +1,10 @@
 #ndrawercont {
-  &.ndtop-left {}
+  overflow: hidden;
+  transition: all 0.5s ease;
+
+  &.ndtop-left {
+    position: absolute; top: 90px; left: 20px;
+  }
   &.ndtop {}
   &.ndtop-right {
     position: absolute; top: 10px; right: 20px;
@@ -17,4 +22,14 @@
     border-radius: 10px;
     color: white;
   }
+}
+
+.hide {
+  opacity: 0;
+  scale: 0; max-height: 0px;
+}
+
+.show {
+  opacity: 1;
+  scale: 1; max-height: 90px;
 }
