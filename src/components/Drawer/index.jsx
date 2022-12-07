@@ -1,17 +1,12 @@
 import './drawer.style.scss'
 
+const Positions = ['top-left', 'top', 'top-right', 'center-left', 'center', 'center-right', 'bottom-left', 'bottom', 'bottom-right', 'slave'];
+
 const NeuriDrawer = ({ props }) => {
   const Position = () => {
-    if ( props?.position === false ) return 'ndslave'
-    if ( props.position === 'top-left' ) return 'ndtop-left'
-    if ( props.position === 'top' ) return 'ndtop'
-    if ( props.position === 'top-right' ) return 'ndtop-right'
-    if ( props.position === 'center-left' ) return 'ndcenter-left'
-    if ( props.position === 'center' ) return 'ndcenter'
-    if ( props.position === 'center-right' ) return 'ndcenter-right'
-    if ( props.position === 'bottom-left' ) return 'ndbottom-left'
-    if ( props.position === 'bottom' ) return 'ndbottom'
-    if ( props.position === 'bottom-right' ) return 'ndbottom-right'
+    if ( !props?.position ) return 'ndslave'
+    if ( Positions.includes(props.position) ) return `nd${props.position}`
+    return 'ndslave'
   }
 
   const State = () => {
@@ -20,18 +15,19 @@ const NeuriDrawer = ({ props }) => {
   }
 
   const NDConfig = {
-    transcription: props.transcription,
+    transcription: props?.transcription ? props.transcription : [''],
     position: Position(),
     state: State()
   }
   
   return(
     <div id="ndrawercont" className={`${NDConfig.position} ${NDConfig.state}`}>
-      {NDConfig.transcription.map((object, key) => {
+      { 
+        NDConfig.transcription.map((object, key) => {
         return (
           <p key={key} className={ object.color ? 'color' : '' }>{object.value}</p>
-        )
-      })}
+        )})
+      }
     </div>
   )
 }
