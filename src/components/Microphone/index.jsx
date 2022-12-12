@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { Microphone } from 'helpers/iconscall'
 import './Microphone.style.scss'
 
 const Positions = ['top-left', 'top', 'top-right', 'center-left', 'center', 'center-right', 'bottom-left', 'bottom', 'bottom-right', 'slave'];
+const Types = ['default', 'partial', 'full']
 
 const NeuriMicro = ({ state, options }) => {
   const sizedog = () => {
@@ -19,19 +19,17 @@ const NeuriMicro = ({ state, options }) => {
     return 'slave'
   }
 
-  const imgtest = () => {
-    if (options?.custom === undefined) return ''
-    return options.custom.sbyimg
+  const typedog = () => {
+    if ( !options?.type ) return 'default'
+    if ( Types.includes(options.type) ) return options.type
+    return 'default'
   }
 
   const Microcfg = {
     state: state ? 'active' : '',
     position: positiondog(),
     size: sizedog(),
-    custom: {
-      sbyimage: imgtest(),
-      actimage: imgtest(),
-    }
+    type: typedog()
   }
 
   const NeuriDefaultStyle = () => {
@@ -84,4 +82,13 @@ const NeuriMicro = ({ state, options }) => {
     )
   }
 
-  const NeuriCustom = () => { }
+  return (
+    <>
+      { Microcfg.type === 'default' && <NeuriDefaultStyle /> }
+      { Microcfg.type === 'partial' && <NeuriPartialCustom /> }
+      { Microcfg.type === 'full' && <NeuriDefaultStyle /> }
+    </>
+  )
+}
+
+export default NeuriMicro

@@ -1,0 +1,110 @@
+{
+  "citys": [
+    {
+      "coincidence": ["monterey","monterrey"],
+      "correct": "Monterrey"
+    },
+    {
+      "coincidence": ["mesico","mexico","nexico", "mecsico"],
+      "correct": "México"
+    },
+    {
+      "coincidence": ["",""],
+      "correct": ""
+    }
+  ],
+  "conv": [
+    {
+      "coincidence": ["first"],
+      "result": "1st"
+    },
+    {
+      "coincidence": ["second"],
+      "result": "2nd"
+    },
+    {
+      "coincidence": ["third"],
+      "result": "3rd"
+    },
+    {
+      "coincidence": ["monterey","monterrey"],
+      "result": "Monterrey"
+    },
+    {
+      "coincidence": ["mesico","mexico","nexico", "mecsico"],
+      "result": "México"
+    },
+    {
+      "coincidence": ["Austin","austin"],
+      "result": "Austin"
+    }
+  ],
+  "conv-month": [
+    {
+      "coincidence": ["january", "jun", "jan"],
+      "result": "January",
+      "number": "01"
+    },
+    {
+      "coincidence": ["february", "feb"],
+      "result": "February",
+      "number": "02"
+    },
+    {
+      "coincidence": ["march", "mar"],
+      "result": "March",
+      "number": "03"
+    },
+    {
+      "coincidence": ["april", "apr"],
+      "result": "April",
+      "number": "04"
+    },
+    {
+      "coincidence": ["may"],
+      "result": "May",
+      "number": "05"
+    },
+    {
+      "coincidence": ["june"],
+      "result": "June",
+      "number": "06"
+    },
+    {
+      "coincidence": ["july", "jul"],
+      "result": "July",
+      "number": "07"
+    },
+    {
+      "coincidence": ["august", "aug"],
+      "result": "August",
+      "number": "08"
+    },
+    {
+      "coincidence": ["september", "sept"],
+      "result": "September",
+      "number": "09"
+    },
+    {
+      "coincidence": ["october", "oct"],
+      "result": "October",
+      "number": "10"
+    },
+    {
+      "coincidence": ["november", "nov"],
+      "result": "November",
+      "number": "11"
+    },
+    {
+      "coincidence": ["december", "dec"],
+      "result": "December",
+      "number": "12"
+    }
+  ],
+  "conv-year": [
+    {
+      "coincidence": ["first"],
+      "result": "1st"
+    }
+  ]
+}

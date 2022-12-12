@@ -91,7 +91,6 @@ const VoiceFilter = () => {
 
   const Dropselection = async ( opt1, opt2, props ) => {
     let newSValue = {};
-    console.log(props)
     if( props !== undefined ) { props.forEach( element => {
       if ( element.name === 'films' && !filteropt.films.includes( element.value ) ) return null
       if ( element.name === 'gender' && !filteropt.gender.includes( element.value ) ) return null
