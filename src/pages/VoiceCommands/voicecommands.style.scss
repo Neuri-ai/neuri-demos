@@ -1,6 +1,11 @@
 #SectionVCommands {
-  border: 1px solid black;
-  width: 80%; margin: auto; margin-top: 20px;
-  display: flex; flex-direction: column; gap: 10px;
-  align-items: center; justify-content: center;
+  width: 100%;
+
+  #vcommandcontainer {
+    width: 70%; height: auto; margin: auto; margin-top: 2%; padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    align-items: center; justify-content: center;
+    background-color: white; border-radius: 10px;
+    filter: drop-shadow(1px 1px 2px gray);
+  }
 }

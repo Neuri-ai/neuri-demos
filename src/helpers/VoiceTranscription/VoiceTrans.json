@@ -16,27 +16,23 @@
   "conv": [
     {
       "coincidence": ["first"],
-      "result": "1st"
+      "result": "1st",
+      "number": 1
     },
     {
       "coincidence": ["second"],
-      "result": "2nd"
+      "result": "2nd",
+      "number": 2
     },
     {
       "coincidence": ["third"],
-      "result": "3rd"
+      "result": "3rd",
+      "number": 3
     },
     {
-      "coincidence": ["monterey","monterrey"],
-      "result": "Monterrey"
-    },
-    {
-      "coincidence": ["mesico","mexico","nexico", "mecsico"],
-      "result": "México"
-    },
-    {
-      "coincidence": ["Austin","austin"],
-      "result": "Austin"
+      "coincidence": ["thirteen"],
+      "result": "13th",
+      "number": 13
     }
   ],
   "conv-month": [

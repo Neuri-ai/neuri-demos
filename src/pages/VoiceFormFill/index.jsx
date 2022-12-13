@@ -64,23 +64,32 @@ const VoiceFormFill = () => {
 
   const InfProces = ( trans ) => {
 // Package from Mexico leaves June 12, 2022 at 1:00 p.m. to Monterrey on July 14, 2022 at 9:00 a.m.
-// 
     console.log(trans)
     const splitedtrans = trans["transcription"].split(' ');
     console.log(splitedtrans)
-    if ( formVal.input1 === '' && splitedtrans.includes('from')) {
-      let city = splitedtrans[splitedtrans.lastIndexOf('from') + 1];
-      vformcheck['citys'].filter(filt => filt["coincidence"].includes(city)).map(obj => {
+
+    if ( splitedtrans.includes('clear') ) return setFormVal(initialFormVal)
+    if ( formVal.input1 === '' && splitedtrans.includes('location')) {
+      let city = splitedtrans[splitedtrans.lastIndexOf('location') + 1];
+      setFormVal(formVal => ({...formVal, input1: city }))
+      /*
+        vformcheck['citys'].filter(filt => filt["coincidence"].includes(city)).map(obj => {
           setFormVal(formVal => ({...formVal, input1: obj["correct"] })) })
+      */
     }
-    if ( formVal.input2 === '' && splitedtrans.includes('to') ) {
-      let city = splitedtrans[splitedtrans.lastIndexOf('to') + 1];
+    if ( formVal.date1 === '' && splitedtrans.includes('date')) {
+      let year = new Date().getFullYear()
+      let time = splitedtrans[splitedtrans.lastIndexOf('date') + 1];
+      console.log(time)
+    }
+    if ( formVal.time1 === '' && splitedtrans.includes('time')) return console.log("time 1 esta vacio")
+
+    if ( formVal.input2 === '' && splitedtrans.includes('location') ) {
+      let city = splitedtrans[splitedtrans.lastIndexOf('location') + 1];
       vformcheck['citys'].filter(filt => filt["coincidence"].includes(city)).map(obj => {
           setFormVal(formVal => ({...formVal, input2: obj["correct"] })) })
     }
-    if ( formVal.date1 === '' ) return console.log("")
-    if ( formVal.date2 === '' ) return console.log("date 2 esta vacio")
-    if ( formVal.time1 === '' ) return console.log("time 1 esta vacio")
+    if ( formVal.date2 === '' ) return console.log("")
     if ( formVal.time2 === '' ) return console.log("time 2 esta vacio")
   }
 
@@ -174,31 +183,39 @@ const VoiceFormFill = () => {
   return (
     <>
       <section id="DemoFFSection">
+        <h1>Rent a Car</h1>
         <form id="DemoFFGrid">
-          <label id="DFG1">
-            <p>Pick up location</p>
-            <input type="text" className="" value={formVal.input1} readOnly></input>
-          </label>
-          <label id="DFG2">
-            <p>Drop off location</p>
-            <input placeholder="Same as pick up location" type="text" value={formVal.input2} readOnly></input>
-          </label>
-          <div id="DFG3">
-            <div className="off">
-              <label>Pick up Date</label>
-              <div className="inputs">
-                <input type="date" value={formVal.date1} readOnly></input>
-                <input type="time" value="08:00" readOnly></input>
-              </div>
+
+          <div id="pickup">
+            <div className="locationdiv">
+              <p>Location</p>
+              <input type="text" placeholder="Airport" className="" value={formVal.input1} readOnly></input>
             </div>
-            <div className="off">
-              <label>Drop off Date</label>
-              <div className="inputs">
-                <input type="date" value="2022-09-29" readOnly></input>
-                <input type="time" value="13:00" readOnly></input>
-              </div>
+            <div className="datediv">
+              <p>Date</p>
+              <input type="date" value={formVal.date1} readOnly></input>
+            </div>
+            <div className="timediv">
+              <p>Time</p>
+              <input type="time" value="08:00" readOnly></input>
             </div>
           </div>
+
+          <div id="dropoff">
+            <div className="locationdiv">
+                <p>Location</p>
+                <input placeholder="Same as pick up location" type="text" value={formVal.input2} readOnly></input>
+            </div>
+            <div className="datediv">
+              <p>Date</p>
+              <input type="date" value="2022-09-29" readOnly></input>
+            </div>
+            <div className="timediv">
+              <p>Time</p>
+              <input type="time" value="13:00" readOnly></input>
+            </div>
+          </div>
+
           <button type="submit" id="dffsbtn">
             Search
           </button>
