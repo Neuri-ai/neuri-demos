@@ -7,7 +7,7 @@
   transition: all 0.5s ease;
 
   &.ndtop-left {
-    position: absolute; top: 90px; left: 20px;
+    position: fixed; top: 90px; left: 20px;
   }
   &.ndtop {}
   &.ndtop-right {

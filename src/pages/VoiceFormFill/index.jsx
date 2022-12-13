@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect, useReducer } from "react";
 import NMicrophone from "components/Microphone";
 import NeuriDrawer from "components/Drawer";
+import gsap from "gsap";
 import "./style.css";
 import "./formfill.style.scss";
-import { useEffect } from "react";
+import vformcheck from "helpers/VoiceTranscription/VoiceTrans.json"
 import RecordRTC, { StereoAudioRecorder } from "recordrtc";
-import gsap from "gsap";
 
-const API_KEY = "LHfyH9zSH1CMXCfew3vjsGOhFRSW78sL_w";
+
+const API_KEY = "sEv5IWnlSCfJ79osIaoLClpZS8nscI2PGw";
 const SAMPLE_RATE = 16000;
 const LANG = "en-us";
 const URL = `wss://api.neuri.ai/api/apha/v1/services/audio/realtime?apikey=${API_KEY}&sample_rate=${SAMPLE_RATE}&lang=${LANG}`;
@@ -15,8 +16,15 @@ let recorder;
 let socket;
 
 const VoiceFormFill = () => {
-  const [state, setState] = useState(false);
   const [isRecording, setRecording] = useState(true);
+  const initialFormVal = { input1: '', input2: '', date1: '', date2: '', time1: '', time2: '' };
+  const [formVal, setFormVal] = useState(initialFormVal)
+
+  const reducer = (state, param) => {
+    return param
+  }
+
+  const [state, dispatch] = useReducer(reducer, [{ color: false, value: '' }])
 
   useEffect(() => {
     let tl = gsap.timeline();
@@ -42,8 +50,52 @@ const VoiceFormFill = () => {
     );
   }, []);
 
+  const DrawerFormatter = ( trans ) => {
+    const splitedtrans = trans.split(' ');
+    const formatedtrans = splitedtrans.map(obj => {
+      let helper = vformcheck['conv'].filter(subobj => subobj["coincidence"].includes(obj)).map(filtered => {
+        return { color: true, value: filtered.result }
+      })
+      if (Object.keys(helper).length > 0 ) return helper
+      return {color: false, value: obj }
+    })
+    dispatch(formatedtrans.flat())
+  }
+
+  const InfProces = ( trans ) => {
+// Package from Mexico leaves June 12, 2022 at 1:00 p.m. to Monterrey on July 14, 2022 at 9:00 a.m.
+    console.log(trans)
+    const splitedtrans = trans["transcription"].split(' ');
+    console.log(splitedtrans)
+
+    if ( splitedtrans.includes('clear') ) return setFormVal(initialFormVal)
+    if ( formVal.input1 === '' && splitedtrans.includes('location')) {
+      let city = splitedtrans[splitedtrans.lastIndexOf('location') + 1];
+      setFormVal(formVal => ({...formVal, input1: city }))
+      /*
+        vformcheck['citys'].filter(filt => filt["coincidence"].includes(city)).map(obj => {
+          setFormVal(formVal => ({...formVal, input1: obj["correct"] })) })
+      */
+    }
+    if ( formVal.date1 === '' && splitedtrans.includes('date')) {
+      let year = new Date().getFullYear()
+      let time = splitedtrans[splitedtrans.lastIndexOf('date') + 1];
+      console.log(time)
+    }
+    if ( formVal.time1 === '' && splitedtrans.includes('time')) return console.log("time 1 esta vacio")
+
+    if ( formVal.input2 === '' && splitedtrans.includes('location') ) {
+      let city = splitedtrans[splitedtrans.lastIndexOf('location') + 1];
+      vformcheck['citys'].filter(filt => filt["coincidence"].includes(city)).map(obj => {
+          setFormVal(formVal => ({...formVal, input2: obj["correct"] })) })
+    }
+    if ( formVal.date2 === '' ) return console.log("")
+    if ( formVal.time2 === '' ) return console.log("time 2 esta vacio")
+  }
+
   const run = async () => {
     setRecording(!isRecording);
+    dispatch([{ color: false, value: 'initializing' }])
 
     if (!isRecording) {
       // si el microfono esta grabando detener y limpiar la memoria
@@ -68,13 +120,13 @@ const VoiceFormFill = () => {
         try {
           const res = JSON.parse(event.data);
           if (res.isFinal === false) {
-            console.log(res);
+            DrawerFormatter(res.transcription)
           }
           if (res.isFinal === true) {
-            console.log(res);
+            InfProces(res)
           }
         } catch (e) {
-          console.log(event.data);
+          //console.log(event.data);
         }
       };
 
@@ -92,6 +144,7 @@ const VoiceFormFill = () => {
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+          dispatch([{ color: false, value: 'Listening . . .' }])
           recorder = RecordRTC(stream, {
             type: "audio",
             disableLogs: true,
@@ -130,44 +183,52 @@ const VoiceFormFill = () => {
   return (
     <>
       <section id="DemoFFSection">
+        <h1>Rent a Car</h1>
         <form id="DemoFFGrid">
-          <label id="DFG1">
-            <p>Pick up location</p>
-            <input type="text" className=""></input>
-          </label>
-          <label id="DFG2">
-            <p>Drop off location</p>
-            <input placeholder="Same as pick up location" type="text"></input>
-          </label>
-          <div id="DFG3">
-            <div className="off">
-              <label>Pick up Date</label>
-              <div className="inputs">
-                <input type="date"></input>
-                <input type="time" defaultValue="08:00"></input>
-              </div>
+
+          <div id="pickup">
+            <div className="locationdiv">
+              <p>Location</p>
+              <input type="text" placeholder="Airport" className="" value={formVal.input1} readOnly></input>
             </div>
-            <div className="off">
-              <label>Drop off Date</label>
-              <div className="inputs">
-                <input type="date"></input>
-                <input type="time" defaultValue="13:00"></input>
-              </div>
+            <div className="datediv">
+              <p>Date</p>
+              <input type="date" value={formVal.date1} readOnly></input>
+            </div>
+            <div className="timediv">
+              <p>Time</p>
+              <input type="time" value="08:00" readOnly></input>
             </div>
           </div>
+
+          <div id="dropoff">
+            <div className="locationdiv">
+                <p>Location</p>
+                <input placeholder="Same as pick up location" type="text" value={formVal.input2} readOnly></input>
+            </div>
+            <div className="datediv">
+              <p>Date</p>
+              <input type="date" value="2022-09-29" readOnly></input>
+            </div>
+            <div className="timediv">
+              <p>Time</p>
+              <input type="time" value="13:00" readOnly></input>
+            </div>
+          </div>
+
           <button type="submit" id="dffsbtn">
             Search
           </button>
         </form>
       </section>
       <div id="vffnmicro" onClick={() => run()}>
-        <NMicrophone state={state} />
+        <NMicrophone state={!isRecording} />
       </div>
       <NeuriDrawer
         props={{
-          transcription: "",
+          transcription: state,
           position: "top-left",
-          state: state,
+          state: !isRecording,
         }}
       />
     </>

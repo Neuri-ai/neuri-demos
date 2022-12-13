@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import SWApi from "helpers/StarWarsApi/StarWarsApi.json";
 import NeuriMicro from "components/Microphone";
 import { Icons } from "helpers/iconscall";
@@ -21,8 +21,12 @@ const VoiceFilter = () => {
   const [filtered, setFiltered] = useState(
     DataBase.sort(() => Math.random() - 0.5)
   );
-  const [trans, setTrans, transRef] = useState([{ color: false, value: 'Listening...' }]);
   const [isRecording, setRecording] = useState(true);
+
+  const reducer = ( state, param ) => {
+    return param
+  }
+  const [state, dispatch] = useReducer( reducer, [{ color: false, value: '' }]);
 
   useEffect(() => {
     let tl = gsap.timeline();
@@ -68,9 +72,9 @@ const VoiceFilter = () => {
     tl.fromTo(
       "#dpfcardscontainer",
       {
-        opacity: 0,
+        opacity: 0, scale: 0.8
       },
-      { opacity: 1 }
+      { opacity: 1, scale: 1 }
     );
     tl.fromTo(
       "#microdiv",
@@ -87,22 +91,19 @@ const VoiceFilter = () => {
 
   const Dropselection = async ( opt1, opt2, props ) => {
     let newSValue = {};
-    console.log(props)
     if( props !== undefined ) { props.forEach( element => {
-      if ( element.name === 'films' && !filteropt.films.includes( element.value ) ) return console.log('te pille esponja')
-      if ( element.name === 'gender' && !filteropt.gender.includes( element.value ) ) return console.log('te pille esponja')
-      if ( element.name === 'homeworld' && !filteropt.homeworld.includes( element.value ) ) return console.log('te pille esponja')
-      if ( element.name === 'species' && !filteropt.species.includes( element.value ) ) return console.log('te pille esponja')
-      if ( element.name === 'hairColor' && !filteropt.hairColor.includes( element.value ) ) return console.log('te pille esponja')
-      if ( element.name === 'eyeColor' && !filteropt.eyeColor.includes( element.value ) ) return console.log('te pille esponja')
+      if ( element.name === 'films' && !filteropt.films.includes( element.value ) ) return null
+      if ( element.name === 'gender' && !filteropt.gender.includes( element.value ) ) return null
+      if ( element.name === 'homeworld' && !filteropt.homeworld.includes( element.value ) ) return null
+      if ( element.name === 'species' && !filteropt.species.includes( element.value ) ) return null
+      if ( element.name === 'hairColor' && !filteropt.hairColor.includes( element.value ) ) return null
+      if ( element.name === 'eyeColor' && !filteropt.eyeColor.includes( element.value ) ) return null
       newSValue = { ...SValue, ...newSValue, [element.name]: element.value }
     }) }
     if ( Object.keys(newSValue).length <= 0) {newSValue = SWApi["initialFilter"]}
-    console.log(newSValue)
     if( props === undefined ) { newSValue = { ...SValue, [opt1]: opt2 } }
     
-    let newFilter = DataBase.sort(() => Math.random() - 0.5);
-
+    let newFilter = DataBase;
     if (newSValue.films !== "any") {
       newFilter = newFilter.filter((obj) => {
         if (obj.films === undefined) return null;
@@ -114,7 +115,7 @@ const VoiceFilter = () => {
     if (newSValue.gender !== "any")
       newFilter = newFilter.filter((obj) => {
         if (obj.gender === undefined) return null;
-        if (obj.gender.includes(newSValue.gender) === true) {
+        if (obj.gender === newSValue.gender) {
           return obj;
         }
       });
@@ -155,6 +156,7 @@ const VoiceFilter = () => {
 
   const run = async () => {
     setRecording(!isRecording);
+    dispatch([{ color: false, value: 'initializing' }])
 
     if (!isRecording) {
       // si el microfono esta grabando detener y limpiar la memoria
@@ -181,21 +183,14 @@ const VoiceFilter = () => {
           let sublist = [];
           if (res.isFinal === false) {
             sublist = res.entities.map(element => {
-              if ( element.name === 'hairColor' ) return { color: true, value: element.value, name: element.name }
-              if ( element.name === 'species' ) return { color: true, value: element.value, name: element.name }
-              if ( element.name === 'gender' ) return { color: true, value: element.value, name: element.name }
+              if ( SWApi["mapfilters"]["people"].includes(element.name) ) return { color: true, value: element.value, name: element.name }
               return { color: false, value: element.value, name: element.name }
             });
-            setTrans(sublist)
+            dispatch(sublist)
+            Dropselection( '', '', sublist )
           }
           if (res.isFinal === true) {
-            sublist = res.entities.map(element => {
-              if ( element.name === 'hairColor' ) return { color: true, value: element.value, name: element.name }
-              if ( element.name === 'species' ) return { color: true, value: element.value, name: element.name }
-              if ( element.name === 'gender' ) return { color: true, value: element.value, name: element.name }
-              return { color: false, value: element.value, name: element.name }
-            });
-            Dropselection( '', '', sublist )
+            
           }
         } catch (e) {
           console.log(e);
@@ -211,12 +206,13 @@ const VoiceFilter = () => {
       // handle closing the socket
       socket.onclose = (event) => {
         socket = null; // clean of memory
-        setTrans([{ color: false, value: 'Listening...' }])
+        dispatch([{ color: false, value: '' }])
       };
 
       // this function is called when the websocket is opened
       socket.onopen = async () => {
         navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+          dispatch([{ color: false, value: 'Listening . . .' }])
           recorder = RecordRTC(stream, {
             type: "audio",
             disableLogs: true,
@@ -392,7 +388,7 @@ const VoiceFilter = () => {
         <NeuriMicro state={!isRecording} />
       </div>
       <div id="drawerdiv">
-        <NeuriDrawer props={{ transcription: trans, state: !isRecording }} />
+        <NeuriDrawer props={{ transcription: state, state: !isRecording }} />
       </div>
     </section>
   );

@@ -1,7 +1,8 @@
-
-import { useState } from 'react'
 import { Microphone } from 'helpers/iconscall'
 import './Microphone.style.scss'
+
+const Positions = ['top-left', 'top', 'top-right', 'center-left', 'center', 'center-right', 'bottom-left', 'bottom', 'bottom-right', 'slave'];
+const Types = ['default', 'partial', 'full']
 
 const NeuriMicro = ({ state, options }) => {
   const sizedog = () => {
@@ -13,32 +14,22 @@ const NeuriMicro = ({ state, options }) => {
   }
 
   const positiondog = () => {
-    if (options?.position && options.position === 'top-left') return 'top-left'
-    if (options?.position && options.position === 'top') return 'top'
-    if (options?.position && options.position === 'top-right') return 'top-right'
-    if (options?.position && options.position === 'center-left') return 'center-left'
-    if (options?.position && options.position === 'center') return 'center'
-    if (options?.position && options.position === 'center-right') return 'center-right'
-    if (options?.position && options.position === 'bottom-left') return 'bottom-left'
-    if (options?.position && options.position === 'bottom') return 'bottom'
-    if (options?.position && options.position === 'bottom-right') return 'bottom-right'
-    if (options?.position && options.position === 'slave') return 'slave'
+    if ( !options?.position ) return 'slave'
+    if ( Positions.includes(options.position) ) return options.position
     return 'slave'
   }
 
-  const imgtest = () => {
-    if (options?.custom === undefined) return ''
-    return options.custom.sbyimg
+  const typedog = () => {
+    if ( !options?.type ) return 'default'
+    if ( Types.includes(options.type) ) return options.type
+    return 'default'
   }
 
   const Microcfg = {
     state: state ? 'active' : '',
     position: positiondog(),
     size: sizedog(),
-    custom: {
-      sbyimage: imgtest(),
-      actimage: imgtest(),
-    }
+    type: typedog()
   }
 
   const NeuriDefaultStyle = () => {
@@ -91,20 +82,13 @@ const NeuriMicro = ({ state, options }) => {
     )
   }
 
-  const NeuriCustom = () => { }
-
   return (
-    <div id="nmicrocontainer" className={`${Microcfg.position}`} style={{ width: `${Microcfg.size}` }}>
-      <div id="nmicropos">
-        <div id="nmicrosubcontainer" className={`${Microcfg.state}`}>
-          <div id="nml1" className={`${Microcfg.state}`}></div>
-          <div id="nml2" className={`${Microcfg.state}`}><Microphone /></div>
-          <div id="nml3" className={`${Microcfg.state}`}></div>
-          <div id="nml4" className={`${Microcfg.state}`}></div>
-          <div id="nml5" className={`${Microcfg.state}`}></div>
-        </div>
-      </div>
-    </div>
+    <>
+      { Microcfg.type === 'default' && <NeuriDefaultStyle /> }
+      { Microcfg.type === 'partial' && <NeuriPartialCustom /> }
+      { Microcfg.type === 'full' && <NeuriDefaultStyle /> }
+    </>
   )
 }
+
 export default NeuriMicro

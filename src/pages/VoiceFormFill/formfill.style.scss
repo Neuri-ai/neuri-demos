@@ -37,41 +37,76 @@
 
 #DemoFFGrid {
   display: grid;
-  grid-template-columns: 49% 49%;
-  column-gap: 2%;
+  grid-template-columns: 49% 49%; column-gap: 2%;
   row-gap: 20px;
 
-  @media only screen and (max-width: 600px) {
-    display: flex; flex-direction: column;
-  }
+  #pickup {
+    position: relative; margin-top: 30px;
+    display: flex; flex-direction: column; gap: 15px;
+    padding: 10px; border: 2px solid var(--inplabel);
 
-  #DFG1, #DFG2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: 2px solid var(--inplabel);
-    border-radius: 10px;
-
-    @media only screen and (max-width: 600px) {
-      flex-direction: column;
+    &::after {
+      content: 'PICK UP'; display: flex; height: 40px; padding: 0px 20px;
+      position: absolute; align-items: center; top: -20px; left: 30%;
+      background-color: white; border: 2px solid var(--inplabel);
+      border-radius: 10px 3%;
+      font-family: 'Poppins'; font-weight: bold; font-size: 1.5rem;
     }
   }
 
-  input[type=text] {
-    width: 80%;
-    margin: auto;
-    height: 80%;
-    border: none;
-    padding-left: 10px;
+  #dropoff {
+    position: relative; margin-top: 30px;
+    display: flex; flex-direction: column; gap: 15px;
+    padding: 10px; border: 2px solid var(--inplabel);
+    scale: 0.9; opacity: 0.5; pointer-events: none;
+
+    &::after {
+      content: 'DROP OFF'; display: flex; height: 40px; padding: 0px 20px;
+      position: absolute; align-items: center; top: -20px; left: 30%;
+      background-color: white; border: 2px solid var(--inplabel);
+      border-radius: 10px 3%;
+      font-family: 'Poppins'; font-weight: bold; font-size: 1.5rem;
+    }
+  }
+
+  .locationdiv {
+    position: relative; display: flex; flex-direction: row;
+    border: 2px solid var(--inplabel); border-radius: 10px;
+    background-color: white; margin-top: 30px;
+
+    p { width: 100px; }
+  }
+
+  .datediv {
+    position: relative; display: flex; flex-direction: row;
+    border: 2px solid var(--inplabel); border-radius: 10px;
+    background-color: white;
+
+    p { width: 100px; }
+  }
+
+  .timediv {
+    position: relative; display: flex; flex-direction: row;
+    border: 2px solid var(--inplabel); border-radius: 10px;
+    background-color: white;
+
+    p { width: 100px; }
+  }
+
+  input {
+    border: none; padding-left: 10px;
 
     @media only screen and (max-width: 600px) {
       width: 100%; height: 100%;
     }
+
     &:focus {
       outline: none;
     }
+  }
+
+  @media only screen and (max-width: 600px) {
+    display: flex; flex-direction: column;
   }
 
   p {
@@ -88,18 +123,6 @@
     @media only screen and (max-width: 600px) {
       width: 100%;
     }
-  }
-}
-
-#DFG3 {
-  grid-column: 1/3;
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 49% 49%;
-  gap: 2%;
-
-  @media only screen and (max-width: 600px) {
-    display: flex; flex-direction: column; row-gap: 20px;
   }
 }
 
