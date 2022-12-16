@@ -1,41 +1,40 @@
 {
-  "citys": [
-    {
-      "coincidence": ["monterey","monterrey"],
-      "correct": "Monterrey"
-    },
-    {
-      "coincidence": ["mesico","mexico","nexico", "mecsico"],
-      "correct": "México"
-    },
-    {
-      "coincidence": ["",""],
-      "correct": ""
-    }
-  ],
   "conv": [
     {
       "coincidence": ["first"],
       "result": "1st",
+      "number": "01"
+    },
+    {
+      "coincidence": ["one"],
+      "result": "1",
       "number": 1
     },
     {
       "coincidence": ["second"],
       "result": "2nd",
-      "number": 2
+      "number": "02"
     },
     {
       "coincidence": ["third"],
       "result": "3rd",
-      "number": 3
+      "number": "03"
+    },
+    {
+      "coincidence": ["third"],
+      "result": "4th",
+      "number": "04"
+    },
+    {
+      "coincidence": ["third"],
+      "result": "5th",
+      "number": "05"
     },
     {
       "coincidence": ["thirteen"],
       "result": "13th",
-      "number": 13
-    }
-  ],
-  "conv-month": [
+      "number": "13"
+    },
     {
       "coincidence": ["january", "jun", "jan"],
       "result": "January",
@@ -97,10 +96,208 @@
       "number": "12"
     }
   ],
-  "conv-year": [
+  "date-permited": [
+    { "coincidence": ["first", "one"] },
+    { "coincidence": ["second", "two"] },
+    { "coincidence": ["third", "three"] },
+    { "coincidence": ["fourth", "four"] },
+    { "coincidence": ["fifth", "five"] },
+    { "coincidence": ["sixth", "six"] },
+    { "coincidence": ["seventh", "seven"] },
+    { "coincidence": ["eighth", "eight"] },
+    { "coincidence": ["nineth", "nine"] },
+    { "coincidence": ["tenth", "ten"] },
+    { "coincidence": ["eleventh", "eleven"] },
+    { "coincidence": ["twelfth", "twelve"] },
+    { "coincidence": ["thirteenth", "thirteen"] },
+    { "coincidence": ["fourteenth", "fourteen"] },
+    { "coincidence": ["fifteenth", "fifteen"] },
+    { "coincidence": ["sixteenth", "sixteen"] },
+    { "coincidence": ["seventeenth", "seventeen"] },
+    { "coincidence": ["eighteenth", "eighteen"] },
+    { "coincidence": ["nineteenth", "nineteen"] },
+    { "coincidence": ["twentieth", "twenty"] },
+    { "coincidence": ["twenty first", "twenty one"] },
+    { "coincidence": ["twenty second", "twenty two"] },
+    { "coincidence": ["twenty third", "twenty three"] },
+    { "coincidence": ["twenty fourth", "twenty four"] },
+    { "coincidence": ["twenty fifth", "twenty five"] },
+    { "coincidence": ["twenty sixth", "twenty six"] },
+    { "coincidence": ["twenty seventh", "twenty seven"] },
+    { "coincidence": ["twenty eighth", "twenty eight"] },
+    { "coincidence": ["twenty ninth", "twenty nine"] },
+    { "coincidence": ["thirtieth", "thirty"] },
+    { "coincidence": ["thousand"] },
+    { "coincidence": ["hundred"] }
+  ],
+  "day": [
+    { "coincidence": ["first", "one"], "number": "01" },
+    { "coincidence": ["second", "two"], "number": "02" },
+    { "coincidence": ["third", "three"], "number": "03" },
+    { "coincidence": ["fourth", "four"], "number": "04" },
+    { "coincidence": ["fifth", "five"], "number": "05" },
+    { "coincidence": ["sixth", "six"], "number": "06" },
+    { "coincidence": ["seventh", "seven"], "number": "07" },
+    { "coincidence": ["eighth", "eight"], "number": "08" },
+    { "coincidence": ["nineth", "nine"], "number": "09" },
+    { "coincidence": ["tenth", "ten"], "number": "10" },
+    { "coincidence": ["eleventh", "eleven"], "number": "11" },
+    { "coincidence": ["twelfth", "twelve"], "number": "12" },
+    { "coincidence": ["thirteenth", "thirteen"], "number": "13" },
+    { "coincidence": ["fourteenth", "fourteen"], "number": "14" },
+    { "coincidence": ["fifteenth", "fifteen"], "number": "15" },
+    { "coincidence": ["sixteenth", "sixteen"], "number": "16" },
+    { "coincidence": ["seventeenth", "seventeen"], "number": "17" },
+    { "coincidence": ["eighteenth", "eighteen"], "number": "18" },
+    { "coincidence": ["nineteenth", "nineteen"], "number": "19" },
+    { "coincidence": ["twentieth", "twenty"], "number": "20" },
+    { "coincidence": ["twenty first", "twenty one"], "number": "21" },
+    { "coincidence": ["twenty second", "twenty two"], "number": "22" },
+    { "coincidence": ["twenty third", "twenty three"], "number": "23" },
+    { "coincidence": ["twenty fourth", "twenty four"], "number": "24" },
+    { "coincidence": ["twenty fifth", "twenty five"], "number": "25" },
+    { "coincidence": ["twenty sixth", "twenty six"], "number": "26" },
+    { "coincidence": ["twenty seventh", "twenty seven"], "number": "27" },
+    { "coincidence": ["twenty eighth", "twenty eight"], "number": "28" },
+    { "coincidence": ["twenty ninth", "twenty nine"], "number": "29" },
+    { "coincidence": ["thirtieth", "thirty"], "number": "30" },
+    { "coincidence": ["thirty first", "thirty one"], "number": "31" }
+  ],
+  "month": [
     {
-      "coincidence": ["first"],
-      "result": "1st"
+      "coincidence": ["january", "jun", "jan"],
+      "result": "January", "number": "01"
+    },
+    {
+      "coincidence": ["february", "feb"],
+      "result": "February", "number": "02"
+    },
+    {
+      "coincidence": ["march", "mar"],
+      "result": "March", "number": "03"
+    },
+    {
+      "coincidence": ["april", "apr"],
+      "result": "April", "number": "04"
+    },
+    {
+      "coincidence": ["may"],
+      "result": "May", "number": "05"
+    },
+    {
+      "coincidence": ["june"],
+      "result": "June", "number": "06"
+    },
+    {
+      "coincidence": ["july", "jul"],
+      "result": "July", "number": "07"
+    },
+    {
+      "coincidence": ["august", "aug"],
+      "result": "August", "number": "08"
+    },
+    {
+      "coincidence": ["september", "sept"],
+      "result": "September", "number": "09"
+    },
+    {
+      "coincidence": ["october", "oct"],
+      "result": "October", "number": "10"
+    },
+    {
+      "coincidence": ["november", "nov"],
+      "result": "November", "number": "11"
+    },
+    {
+      "coincidence": ["december", "dec"],
+      "result": "December", "number": "12"
     }
+  ],
+  "hour": [
+    { "coincidence": ["one"], "num": "01" },
+    { "coincidence": ["two"], "num": "02" },
+    { "coincidence": ["three"], "num": "03" },
+    { "coincidence": ["four"], "num": "04" },
+    { "coincidence": ["five"], "num": "05" },
+    { "coincidence": ["six"], "num": "06" },
+    { "coincidence": ["seven"], "num": "07" },
+    { "coincidence": ["eight"], "num": "08" },
+    { "coincidence": ["nine"], "num": "09" },
+    { "coincidence": ["ten"], "num": "10" },
+    { "coincidence": ["eleven"], "num": "11" },
+    { "coincidence": ["twelve"], "num": "12" },
+    { "coincidence": ["thirteen"], "num": "13" },
+    { "coincidence": ["fourteen"], "num": "14" },
+    { "coincidence": ["fifteen"], "num": "15" },
+    { "coincidence": ["sixteen"], "num": "16" },
+    { "coincidence": ["seventeen"], "num": "17" },
+    { "coincidence": ["eighteen"], "num": "18" },
+    { "coincidence": ["nineteen"], "num": "19" },
+    { "coincidence": ["twenty"], "num": "20" },
+    { "coincidence": ["twenty one"], "num": "21" },
+    { "coincidence": ["twenty two"], "num": "22" },
+    { "coincidence": ["twenty three"], "num": "23" },
+    { "coincidence": ["twenty four"], "num": "24" }
+  ],
+  "min": [
+    { "coincidence": ["o one", "one"], "num": "01" },
+    { "coincidence": ["o two", "two"], "num": "02" },
+    { "coincidence": ["o three", "three"], "num": "03" },
+    { "coincidence": ["o four", "four"], "num": "04" },
+    { "coincidence": ["o five", "five"], "num": "05" },
+    { "coincidence": ["o six", "six"], "num": "06" },
+    { "coincidence": ["o seven", "seven"], "num": "07" },
+    { "coincidence": ["o eight", "eight"], "num": "08" },
+    { "coincidence": ["o nine", "nine"], "num": "09" },
+    { "coincidence": ["ten"], "num": "10" },
+    { "coincidence": ["eleven"], "num": "11" },
+    { "coincidence": ["twelve"], "num": "12" },
+    { "coincidence": ["thirteen"], "num": "13" },
+    { "coincidence": ["fourteen"], "num": "14" },
+    { "coincidence": ["fifteen"], "num": "15" },
+    { "coincidence": ["sixteen"], "num": "16" },
+    { "coincidence": ["seventeen"], "num": "17" },
+    { "coincidence": ["eighteen"], "num": "18" },
+    { "coincidence": ["nineteen"], "num": "19" },
+    { "coincidence": ["twenty"], "num": "20" },
+    { "coincidence": ["twenty one"], "num": "21" },
+    { "coincidence": ["twenty two"], "num": "22" },
+    { "coincidence": ["twenty three"], "num": "23" },
+    { "coincidence": ["twenty four"], "num": "24" },
+    { "coincidence": ["twenty five"], "num": "25" },
+    { "coincidence": ["twenty six"], "num": "26" },
+    { "coincidence": ["twenty seven"], "num": "27" },
+    { "coincidence": ["twenty eight"], "num": "28" },
+    { "coincidence": ["twenty nine"], "num": "29" },
+    { "coincidence": ["thirty"], "num": "30" },
+    { "coincidence": ["thirty one"], "num": "31" },
+    { "coincidence": ["thirty two"], "num": "32" },
+    { "coincidence": ["thirty three"], "num": "33" },
+    { "coincidence": ["thirty four"], "num": "34" },
+    { "coincidence": ["thirty five"], "num": "35" },
+    { "coincidence": ["thirty six"], "num": "36" },
+    { "coincidence": ["thirty seven"], "num": "37" },
+    { "coincidence": ["thirty eight"], "num": "38" },
+    { "coincidence": ["thirty nine"], "num": "39" },
+    { "coincidence": ["Fourty"], "num": "40" },
+    { "coincidence": ["Fourty one"], "num": "41" },
+    { "coincidence": ["Fourty two"], "num": "42" },
+    { "coincidence": ["Fourty three"], "num": "43" },
+    { "coincidence": ["Fourty four"], "num": "44" },
+    { "coincidence": ["Fourty five"], "num": "45" },
+    { "coincidence": ["Fourty six"], "num": "46" },
+    { "coincidence": ["Fourty seven"], "num": "47" },
+    { "coincidence": ["Fourty eight"], "num": "48" },
+    { "coincidence": ["Fourty nine"], "num": "49" },
+    { "coincidence": ["fifty"], "num": "50" },
+    { "coincidence": ["fifty one"], "num": "51" },
+    { "coincidence": ["fifty two"], "num": "52" },
+    { "coincidence": ["fifty three"], "num": "53" },
+    { "coincidence": ["fifty four"], "num": "54" },
+    { "coincidence": ["fifty five"], "num": "55" },
+    { "coincidence": ["fifty six"], "num": "56" },
+    { "coincidence": ["fifty seven"], "num": "57" },
+    { "coincidence": ["fifty eight"], "num": "58" },
+    { "coincidence": ["fifty nine"], "num": "59" }
   ]
 }

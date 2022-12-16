@@ -17,7 +17,7 @@ const demosPaths = [
 	{ path: '/demos/voice-filter', name: 'Voice Filtering'},
 	{ path: '/demos/voice-search', name: 'Voice Search'},
 	{ path: '/demos/voice-input', name: 'Voice Input'},
-	{ path: '/demos/voice-commands', name: 'Voice Commands'},
+	//{ path: '/demos/voice-commands', name: 'Voice Commands'},
 ]
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/demos/voice-filter" component={VoiceFilter}/>
           <Route path="/demos/voice-search" component={VoiceSearch}/>
           <Route path="/demos/voice-input" component={VoiceInput}/>
-          <Route path="/demos/voice-commands" component={VoiceCommands}/>
+          {/* <Route path="/demos/voice-commands" component={VoiceCommands}/> */}
           <Route exact path="/">
             <Redirect to="/demos/voice-input" />
           </Route>
